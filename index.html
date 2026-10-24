@@ -114,6 +114,10 @@ padding:14px 16px;overflow-x:auto;margin:1.1rem 0 1.5rem;line-height:1.5;
 }
 pre code{background:none;padding:0;font-size:.8rem}
 
+figure{margin:1.8rem 0}
+figure img{max-width:100%;height:auto;display:block;margin:0 auto;border:1px solid var(--rule);border-radius:6px}
+figure a{border-bottom:none;display:block}
+figcaption{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:.82rem;color:var(--ink-soft);margin-top:.6rem;font-style:italic}
 blockquote{
 margin:1.3rem 0;padding:14px 20px;
 background:var(--warn-soft);
@@ -546,8 +550,8 @@ system self-corrects. A forecast that turns out to be wrong is simply
 superseded a minute later. This is the principal advantage of MPC over a
 once-daily plan.</p>
 <figure id="fig:architecture">
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NjAgNzAwIiB3aWR0aD0iOTYwIiBoZWlnaHQ9IjcwMCIgZm9udC1mYW1pbHk9IlNlZ29lIFVJLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIj4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImEiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjciIG1hcmtlckhlaWdodD0iNyIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMCAwIEwxMCA1IEwwIDEwIHoiIGZpbGw9IiM0YTU1NWYiLz4KICAgIDwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYWciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjciIG1hcmtlckhlaWdodD0iNyIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMCAwIEwxMCA1IEwwIDEwIHoiIGZpbGw9IiMwYjZlNGYiLz4KICAgIDwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYWQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjciIG1hcmtlckhlaWdodD0iNyIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMCAwIEwxMCA1IEwwIDEwIHoiIGZpbGw9IiM4YTVhMDAiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iOTYwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIvPgoKICA8IS0tID09PT09PT09PT09PSBCQU5EIExBQkVMUyA9PT09PT09PT09PT0gLS0+CiAgPHRleHQgeD0iMjAiIHk9IjQ2IiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjOGY5YWEzIiBsZXR0ZXItc3BhY2luZz0iMS42Ij5FWFRFUk5BTCBTRVJWSUNFUzwvdGV4dD4KICA8dGV4dCB4PSIyMCIgeT0iMTk2IiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjOGY5YWEzIiBsZXR0ZXItc3BhY2luZz0iMS42Ij5TT0ZUV0FSRSBQTEFURk9STTwvdGV4dD4KICA8dGV4dCB4PSIyMCIgeT0iNTYwIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjOGY5YWEzIiBsZXR0ZXItc3BhY2luZz0iMS42Ij5IQVJEV0FSRTwvdGV4dD4KCiAgPCEtLSA9PT09PT09PT09PT0gRVhURVJOQUwgU0VSVklDRVMgPT09PT09PT09PT09IC0tPgogIDxnPgogICAgPHJlY3QgeD0iNDAiIHk9Ijc2IiB3aWR0aD0iMjMwIiBoZWlnaHQ9Ijg2IiByeD0iNyIgZmlsbD0iI2Y2ZjhmOSIgc3Ryb2tlPSIjYzlkMmQ4Ii8+CiAgICA8dGV4dCB4PSIxNTUiIHk9IjEwNCIgZm9udC1zaXplPSIxNC41IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWMyMTI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BbWJlciBFbGVjdHJpYzwvdGV4dD4KICAgIDx0ZXh0IHg9IjE1NSIgeT0iMTI0IiBmb250LXNpemU9IjExLjUiIGZpbGw9IiM0YTU1NWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldob2xlc2FsZSBORU0gcHJpY2VzPC90ZXh0PgogICAgPHRleHQgeD0iMTU1IiB5PSIxNDIiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM3YTg1OGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnZpYSBhbWJlcjJtcXR0IMK3IDUtbWluIHNldHRsZW1lbnQ8L3RleHQ+CgogICAgPHJlY3QgeD0iMzAwIiB5PSI3NiIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI4NiIgcng9IjciIGZpbGw9IiNmNmY4ZjkiIHN0cm9rZT0iI2M5ZDJkOCIvPgogICAgPHRleHQgeD0iNDAwIiB5PSIxMDQiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMjEyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U29sY2FzdDwvdGV4dD4KICAgIDx0ZXh0IHg9IjQwMCIgeT0iMTI0IiBmb250LXNpemU9IjExLjUiIGZpbGw9IiM0YTU1NWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBWIGdlbmVyYXRpb24gZm9yZWNhc3Q8L3RleHQ+CiAgICA8dGV4dCB4PSI0MDAiIHk9IjE0MiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzdhODU4ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SEFDUyDCtyA1IHBvbGxzL2RheTwvdGV4dD4KCiAgICA8cmVjdCB4PSI1MzAiIHk9Ijc2IiB3aWR0aD0iMjAwIiBoZWlnaHQ9Ijg2IiByeD0iNyIgZmlsbD0iI2Y2ZjhmOSIgc3Ryb2tlPSIjYzlkMmQ4Ii8+CiAgICA8dGV4dCB4PSI2MzAiIHk9IjEwNCIgZm9udC1zaXplPSIxNC41IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWMyMTI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UZXNsYSBGbGVldCBBUEk8L3RleHQ+CiAgICA8dGV4dCB4PSI2MzAiIHk9IjEyNCIgZm9udC1zaXplPSIxMS41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FViBzdGF0ZSBhbmQgY29udHJvbDwvdGV4dD4KICAgIDx0ZXh0IHg9IjYzMCIgeT0iMTQyIiBmb250LXNpemU9IjExIiBmaWxsPSIjN2E4NThlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tZXRlcmVkIMK3IGJ1ZGdldCBnYXRlZDwvdGV4dD4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09IEhPTUUgQVNTSVNUQU5UID09PT09PT09PT09PSAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMjI2IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjExOCIgcng9IjgiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzBiNmU0ZiIgc3Ryb2tlLXdpZHRoPSIxLjgiLz4KICA8dGV4dCB4PSI2MCIgeT0iMjUyIiBmb250LXNpemU9IjE1LjUiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwYjZlNGYiPkhvbWUgQXNzaXN0YW50PC90ZXh0PgogIDx0ZXh0IHg9IjYwIiB5PSIyNzIiIGZvbnQtc2l6ZT0iMTEuNSIgZmlsbD0iIzRhNTU1ZiI+RW50aXR5IHN0YXRlIMK3IGludGVncmF0aW9ucyDCtyBkYXNoYm9hcmRzIMK3IFJlY29yZGVyPC90ZXh0PgogIDxyZWN0IHg9IjYwIiB5PSIyODYiIHdpZHRoPSIxNDAiIGhlaWdodD0iNDIiIHJ4PSI1IiBmaWxsPSIjZjZmOGY5IiBzdHJva2U9IiNkZmU0ZTgiLz4KICA8dGV4dCB4PSIxMzAiIHk9IjMwMyIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QcmljZSAvIFBWIC8gbG9hZDwvdGV4dD4KICA8dGV4dCB4PSIxMzAiIHk9IjMxOCIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zZW5zb3JzPC90ZXh0PgogIDxyZWN0IHg9IjIxMiIgeT0iMjg2IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjQyIiByeD0iNSIgZmlsbD0iI2Y2ZjhmOSIgc3Ryb2tlPSIjZGZlNGU4Ii8+CiAgPHRleHQgeD0iMjgyIiB5PSIzMDMiIGZvbnQtc2l6ZT0iMTAuNSIgZmlsbD0iIzRhNTU1ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RU1IQVNTIG91dHB1dDwvdGV4dD4KICA8dGV4dCB4PSIyODIiIHk9IjMxOCIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zZW5zb3JzPC90ZXh0PgogIDxyZWN0IHg9IjM2NCIgeT0iMjg2IiB3aWR0aD0iMTU2IiBoZWlnaHQ9IjQyIiByeD0iNSIgZmlsbD0iI2Y2ZjhmOSIgc3Ryb2tlPSIjZGZlNGU4Ii8+CiAgPHRleHQgeD0iNDQyIiB5PSIzMDMiIGZvbnQtc2l6ZT0iMTAuNSIgZmlsbD0iIzRhNTU1ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SGVscGVycywgc3dpdGNoZXMsPC90ZXh0PgogIDx0ZXh0IHg9IjQ0MiIgeT0iMzE4IiBmb250LXNpemU9IjEwLjUiIGZpbGw9IiM0YTU1NWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmhlYWx0aCBmbGFnczwvdGV4dD4KCiAgPCEtLSA9PT09PT09PT09PT0gRU1IQVNTID09PT09PT09PT09PSAtLT4KICA8cmVjdCB4PSI2MDAiIHk9IjIyNiIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxMTgiIHJ4PSI4IiBmaWxsPSIjZTZmMmVlIiBzdHJva2U9IiMwYjZlNGYiIHN0cm9rZS13aWR0aD0iMS44Ii8+CiAgPHRleHQgeD0iNjIwIiB5PSIyNTIiIGZvbnQtc2l6ZT0iMTUuNSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBiNmU0ZiI+RU1IQVNTIHYwLjEzLjU8L3RleHQ+CiAgPHRleHQgeD0iNjIwIiB5PSIyNzIiIGZvbnQtc2l6ZT0iMTEuNSIgZmlsbD0iIzMxNDYzZiI+TGluZWFyIG9wdGltaXNlciDCtyBzdGF0ZWxlc3M8L3RleHQ+CiAgPHRleHQgeD0iNjIwIiB5PSIyOTYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMzMTQ2M2YiPlBPU1QgL2FjdGlvbi9uYWl2ZS1tcGMtb3B0aW08L3RleHQ+CiAgPHRleHQgeD0iNjIwIiB5PSIzMTQiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMzMTQ2M2YiPlBPU1QgL2FjdGlvbi9wdWJsaXNoLWRhdGE8L3RleHQ+CiAgPHRleHQgeD0iNjIwIiB5PSIzMzQiIGZvbnQtc2l6ZT0iMTAuNSIgZmlsbD0iIzViN2E2ZSI+Q29zdCBmdW5jdGlvbjogcHJvZml0IMK3IDMwLW1pbiBzdGVwczwvdGV4dD4KCiAgPCEtLSA9PT09PT09PT09PT0gTk9ERS1SRUQgPT09PT09PT09PT09IC0tPgogIDxyZWN0IHg9IjQwIiB5PSIzOTIiIHdpZHRoPSI4ODAiIGhlaWdodD0iMTQwIiByeD0iOCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMGI2ZTRmIiBzdHJva2Utd2lkdGg9IjIuNCIvPgogIDx0ZXh0IHg9IjYwIiB5PSI0MTkiIGZvbnQtc2l6ZT0iMTUuNSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBiNmU0ZiI+Tm9kZS1SRUQgJiM4MjEyOyBhbGwgb3JjaGVzdHJhdGlvbjwvdGV4dD4KICA8dGV4dCB4PSI2MCIgeT0iNDM4IiBmb250LXNpemU9IjExLjUiIGZpbGw9IiM0YTU1NWYiPkV2ZXJ5IDYwIHNlY29uZHM6IGFzc2VtYmxlIGZvcmVjYXN0cyAmIzg1OTQ7IG9wdGltaXNlICYjODU5NDsgcHVibGlzaCAmIzg1OTQ7IGFjdDwvdGV4dD4KCiAgPHJlY3QgeD0iNjAiIHk9IjQ1MiIgd2lkdGg9IjE5NiIgaGVpZ2h0PSI2MCIgcng9IjUiIGZpbGw9IiNmNmY4ZjkiIHN0cm9rZT0iI2RmZTRlOCIvPgogIDx0ZXh0IHg9IjE1OCIgeT0iNDcyIiBmb250LXNpemU9IjExLjUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxYzIxMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZvcmVjYXN0IGFzc2VtYmx5PC90ZXh0PgogIDx0ZXh0IHg9IjE1OCIgeT0iNDg5IiBmb250LXNpemU9IjEwLjUiIGZpbGw9IiM0YTU1NWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkppbmphMiB0ZW1wbGF0ZTwvdGV4dD4KICA8dGV4dCB4PSIxNTgiIHk9IjUwNCIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GSUZPIGxvYWQgYnVmZmVyPC90ZXh0PgoKICA8cmVjdCB4PSIyNjgiIHk9IjQ1MiIgd2lkdGg9IjE5NiIgaGVpZ2h0PSI2MCIgcng9IjUiIGZpbGw9IiNmNmY4ZjkiIHN0cm9rZT0iI2RmZTRlOCIvPgogIDx0ZXh0IHg9IjM2NiIgeT0iNDcyIiBmb250LXNpemU9IjExLjUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxYzIxMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJhdHRlcnkgY29udHJvbDwvdGV4dD4KICA8dGV4dCB4PSIzNjYiIHk9IjQ4OSIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tb2RlLCBjaGFyZ2UsIGRpc2NoYXJnZTwvdGV4dD4KICA8dGV4dCB4PSIzNjYiIHk9IjUwNCIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zdGFuZGJ5LCBiYWNrdXAgYnVmZmVyPC90ZXh0PgoKICA8cmVjdCB4PSI0NzYiIHk9IjQ1MiIgd2lkdGg9IjE5NiIgaGVpZ2h0PSI2MCIgcng9IjUiIGZpbGw9IiNmNmY4ZjkiIHN0cm9rZT0iI2RmZTRlOCIvPgogIDx0ZXh0IHg9IjU3NCIgeT0iNDcyIiBmb250LXNpemU9IjExLjUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxYzIxMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmVycmFibGUgbG9hZHM8L3RleHQ+CiAgPHRleHQgeD0iNTc0IiB5PSI0ODkiIGZvbnQtc2l6ZT0iMTAuNSIgZmlsbD0iIzRhNTU1ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+cG9vbCBwdW1wIG9uL29mZjwvdGV4dD4KICA8dGV4dCB4PSI1NzQiIHk9IjUwNCIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FViBjaGFyZ2UgYW1wZXJhZ2U8L3RleHQ+CgogIDxyZWN0IHg9IjY4NCIgeT0iNDUyIiB3aWR0aD0iMjE2IiBoZWlnaHQ9IjYwIiByeD0iNSIgZmlsbD0iI2ZkZjVlNCIgc3Ryb2tlPSIjZTBjZmE0Ii8+CiAgPHRleHQgeD0iNzkyIiB5PSI0NzIiIGZvbnQtc2l6ZT0iMTEuNSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNDcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UmVzaWxpZW5jZTwvdGV4dD4KICA8dGV4dCB4PSI3OTIiIHk9IjQ4OSIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjNmI0NzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BUEkgZXJyb3JzIMK3IG91dGFnZSBzdGF0ZSBtYWNoaW5lPC90ZXh0PgogIDx0ZXh0IHg9Ijc5MiIgeT0iNTA0IiBmb250LXNpemU9IjEwLjUiIGZpbGw9IiM2YjQ3MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmluZmVhc2libGUgaGFuZGxpbmcgwrcgaGVhbHRoIGZsYWdzPC90ZXh0PgoKICA8IS0tID09PT09PT09PT09PSBIQVJEV0FSRSA9PT09PT09PT09PT0gLS0+CiAgPHJlY3QgeD0iNDAiIHk9IjU5MCIgd2lkdGg9IjIzOCIgaGVpZ2h0PSI4MCIgcng9IjciIGZpbGw9IiNmNmY4ZjkiIHN0cm9rZT0iI2M5ZDJkOCIvPgogIDx0ZXh0IHg9IjE1OSIgeT0iNjE2IiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWMyMTI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zb25uZW4gZWNvIDkuNDM8L3RleHQ+CiAgPHRleHQgeD0iMTU5IiB5PSI2MzUiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM0YTU1NWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE1IGtXaCDCtyAzLDMwMCBXPC90ZXh0PgogIDx0ZXh0IHg9IjE1OSIgeT0iNjUzIiBmb250LXNpemU9IjEwLjUiIGZpbGw9IiM3YTg1OGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmxvY2FsIEpTT04gQVBJIHYyIChIVFRQKTwvdGV4dD4KCiAgPHJlY3QgeD0iMjk4IiB5PSI1OTAiIHdpZHRoPSIyMjIiIGhlaWdodD0iODAiIHJ4PSI3IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNjOWE5NjEiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNCIvPgogIDx0ZXh0IHg9IjQwOSIgeT0iNjE2IiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjNmI0NzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Gcm9uaXVzIFByaW1vIDYuMC0xPC90ZXh0PgogIDx0ZXh0IHg9IjQwOSIgeT0iNjM1IiBmb250LXNpemU9IjExIiBmaWxsPSIjNmI0NzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xNyBwYW5lbHMgwrcgNS4wIGtXcDwvdGV4dD4KICA8dGV4dCB4PSI0MDkiIHk9IjY1MyIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjOGE1YTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Nb2RidXMgVENQICYjODIxMjsgcGxhbm5lZDwvdGV4dD4KCiAgPHJlY3QgeD0iNTQwIiB5PSI1OTAiIHdpZHRoPSIxNzYiIGhlaWdodD0iODAiIHJ4PSI3IiBmaWxsPSIjZjZmOGY5IiBzdHJva2U9IiNjOWQyZDgiLz4KICA8dGV4dCB4PSI2MjgiIHk9IjYxNiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMjEyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UG9vbCBwdW1wPC90ZXh0PgogIDx0ZXh0IHg9IjYyOCIgeT0iNjM1IiBmb250LXNpemU9IjExIiBmaWxsPSIjNGE1NTVmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xLDMwMCBXIGZpeGVkPC90ZXh0PgogIDx0ZXh0IHg9IjYyOCIgeT0iNjUzIiBmb250LXNpemU9IjEwLjUiIGZpbGw9IiM3YTg1OGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1ldGVyaW5nIHNtYXJ0IHN3aXRjaDwvdGV4dD4KCiAgPHJlY3QgeD0iNzM2IiB5PSI1OTAiIHdpZHRoPSIxODQiIGhlaWdodD0iODAiIHJ4PSI3IiBmaWxsPSIjZjZmOGY5IiBzdHJva2U9IiNjOWQyZDgiLz4KICA8dGV4dCB4PSI4MjgiIHk9IjYxNiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMjEyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVzbGEgRVY8L3RleHQ+CiAgPHRleHQgeD0iODI4IiB5PSI2MzUiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM0YTU1NWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnVwIHRvIDcsMzYwIFcgdmFyaWFibGU8L3RleHQ+CiAgPHRleHQgeD0iODI4IiB5PSI2NTMiIGZvbnQtc2l6ZT0iMTAuNSIgZmlsbD0iIzdhODU4ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjMwIFYgd2FsbCBjb25uZWN0b3I8L3RleHQ+CgogIDwhLS0gPT09PT09PT09PT09IEFSUk9XUyA9PT09PT09PT09PT0gLS0+CiAgPCEtLSBleHRlcm5hbCBpbnRvIEhBIC0tPgogIDxwYXRoIGQ9Ik0xNTUgMTYyIEwxNTUgMjI2IiBzdHJva2U9IiM0YTU1NWYiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSJub25lIiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+CiAgPHBhdGggZD0iTTQwMCAxNjIgTDQwMCAyMjYiIHN0cm9rZT0iIzRhNTU1ZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9Im5vbmUiIG1hcmtlci1lbmQ9InVybCgjYSkiLz4KICA8cGF0aCBkPSJNNjMwIDE2MiBMNjMwIDE4NiBMNDcwIDE4NiBMNDcwIDIyNiIgc3Ryb2tlPSIjNGE1NTVmIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0ibm9uZSIgbWFya2VyLWVuZD0idXJsKCNhKSIvPgoKICA8IS0tIEhBIDwtPiBOb2RlLVJFRCAtLT4KICA8cGF0aCBkPSJNMjAwIDM0NCBMMjAwIDM5MiIgc3Ryb2tlPSIjMGI2ZTRmIiBzdHJva2Utd2lkdGg9IjEuOCIgZmlsbD0ibm9uZSIgbWFya2VyLWVuZD0idXJsKCNhZykiLz4KICA8cGF0aCBkPSJNMzMwIDM5MiBMMzMwIDM0NCIgc3Ryb2tlPSIjMGI2ZTRmIiBzdHJva2Utd2lkdGg9IjEuOCIgZmlsbD0ibm9uZSIgbWFya2VyLWVuZD0idXJsKCNhZykiLz4KICA8dGV4dCB4PSIyMTIiIHk9IjM3MiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBiNmU0ZiI+cmVhZCBzdGF0ZTwvdGV4dD4KICA8dGV4dCB4PSIzNDIiIHk9IjM3MiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBiNmU0ZiI+d3JpdGUgY29tbWFuZHM8L3RleHQ+CgogIDwhLS0gTm9kZS1SRUQgPC0+IEVNSEFTUyAtLT4KICA8cGF0aCBkPSJNNzAwIDM5MiBMNzAwIDM0NCIgc3Ryb2tlPSIjMGI2ZTRmIiBzdHJva2Utd2lkdGg9IjEuOCIgZmlsbD0ibm9uZSIgbWFya2VyLWVuZD0idXJsKCNhZykiLz4KICA8cGF0aCBkPSJNODMwIDM0NCBMODMwIDM5MiIgc3Ryb2tlPSIjMGI2ZTRmIiBzdHJva2Utd2lkdGg9IjEuOCIgZmlsbD0ibm9uZSIgbWFya2VyLWVuZD0idXJsKCNhZykiLz4KICA8dGV4dCB4PSI2MDAiIHk9IjM3MiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBiNmU0ZiIgdGV4dC1hbmNob3I9ImVuZCI+UE9TVCBmb3JlY2FzdHM8L3RleHQ+CiAgPHRleHQgeD0iODQyIiB5PSIzNzIiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwYjZlNGYiPnBsYW48L3RleHQ+CgogIDwhLS0gTm9kZS1SRUQgdG8gaGFyZHdhcmUgLS0+CiAgPHBhdGggZD0iTTE1OSA1MzIgTDE1OSA1OTAiIHN0cm9rZT0iIzRhNTU1ZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9Im5vbmUiIG1hcmtlci1lbmQ9InVybCgjYSkiLz4KICA8cGF0aCBkPSJNNjI4IDUzMiBMNjI4IDU5MCIgc3Ryb2tlPSIjNGE1NTVmIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0ibm9uZSIgbWFya2VyLWVuZD0idXJsKCNhKSIvPgogIDxwYXRoIGQ9Ik04MjggNTMyIEw4MjggNTkwIiBzdHJva2U9IiM0YTU1NWYiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSJub25lIiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+CiAgPHBhdGggZD0iTTQwOSA1MzIgTDQwOSA1OTAiIHN0cm9rZT0iIzhhNWEwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNCIgbWFya2VyLWVuZD0idXJsKCNhZCkiLz4KPC9zdmc+Cg==" alt="System architecture. External services feed Home Assistant; Node-RED orchestrates everything and is the only component that writes to hardware; EMHASS optimises but controls nothing directly. The dashed path to the Fronius inverter is planned, not implemented." />
-<figcaption aria-hidden="true">System architecture. External services
+<img src="figure-01-architecture.svg" alt="System architecture. External services feed Home Assistant; Node-RED orchestrates everything and is the only component that writes to hardware; EMHASS optimises but controls nothing directly. The dashed path to the Fronius inverter is planned, not implemented." />
+<figcaption>Figure 1. System architecture. External services
 feed Home Assistant; Node-RED orchestrates everything and is the only
 component that writes to hardware; EMHASS optimises but controls nothing
 directly. The dashed path to the Fronius inverter is planned, not
@@ -559,20 +563,19 @@ price spike</h2>
 <a href="https://github.com/RomRider/apexcharts-card">apexcharts-card</a>
 custom card. The left edge is the present moment; everything to the
 right is forecast.</p>
-<blockquote>
-<p><strong>FIGURE 2 REQUIRED</strong> — ApexCharts 24-hour EMHASS
-forecast (existing screenshot from the previous version of this document
-may be reused).</p>
-</blockquote>
+<figure id="fig2">
+<a href="figure-02-forecast.png"><img src="figure-02-forecast.png" alt="A 24-hour EMHASS forecast: prices, planned battery power, pool pump, car, PV, load and grid. The left edge is now." loading="lazy" /></a>
+<figcaption>Figure 2. A 24-hour EMHASS forecast: prices, planned battery power, pool pump, car, PV, load and grid. The left edge is now.</figcaption>
+</figure>
 <p>In the example, a price spike is forecast for 16:30, reaching over
 $18/kWh for roughly three hours. The optimiser responds by scheduling
 the battery to discharge as hard as it can through the spike — visible
 as the battery state-of-charge curve falling steeply during that
 window.</p>
-<blockquote>
-<p><strong>FIGURE 3 REQUIRED</strong> — ApexCharts showing tariff
-forecasts overlaid with forecast battery state of charge.</p>
-</blockquote>
+<figure id="fig3">
+<a href="figure-03-tariff-soc.png"><img src="figure-03-tariff-soc.png" alt="Import and export price forecasts overlaid with the forecast battery state of charge." loading="lazy" /></a>
+<figcaption>Figure 3. Import and export price forecasts overlaid with the forecast battery state of charge.</figcaption>
+</figure>
 <h1 id="optimisation-methods">Optimisation methods</h1>
 <p>EMHASS offers several optimisation strategies. Two are relevant
 here.</p>
@@ -705,9 +708,9 @@ are assembled on every cycle.</p>
 Electric</h2>
 <p>Amber Electric resells at wholesale NEM prices and publishes forward
 price forecasts. The NEM settles on a <strong>five-minute</strong>
-basis; Amber historically rebundled this into 30-minute billing periods,
-and is progressively migrating customers to true five-minute
-settlement.</p>
+basis. Amber has now moved customers from 30-minute billing to true
+five-minute settlement, so the current price changes every five minutes
+and the forecast resolution has changed with it.</p>
 <h3 id="current-implementation-amber2mqtt">Current implementation:
 amber2mqtt</h3>
 <p>This system uses <a href="https://github.com/cabberley/amber2mqtt-addon">Chris Abberley’s
@@ -760,23 +763,44 @@ template.</li>
 from amber2mqtt are multiplied by −1 in the template to match the sign
 convention EMHASS expects.</li>
 </ul>
-<h3 id="legacy-implementation-the-amber-ha-integration">Legacy
-implementation: the Amber HA integration</h3>
-<p>If you remain on 30-minute settlement, the official <a href="https://www.home-assistant.io/integrations/amberelectric/">Amber
-Electric integration</a> is simpler. It provides
+<h3 id="legacy-implementation-the-amber-ha-integration">Other
+options: the official integration and Amber Express</h3>
+<p>The official <a href="https://www.home-assistant.io/integrations/amberelectric/">Amber
+Electric integration</a> has historically provided
 <code>sensor.&lt;site&gt;_general_price</code>,
 <code>sensor.&lt;site&gt;_feed_in_price</code>,
 <code>sensor.&lt;site&gt;_general_forecast</code> and
-<code>sensor.&lt;site&gt;_feed_in_forecast</code>.</p>
-<p>Templates using these entities remain in
+<code>sensor.&lt;site&gt;_feed_in_forecast</code>. As of October 2026 it
+is a weaker fit for this system, for three reasons:</p>
+<ul>
+<li><strong>The forecast sensors are being retired.</strong> Home
+Assistant maintainers have said the forecast sensor will be deprecated,
+because sensors carrying large forecast arrays strain the history
+database. Forecasts are instead available from the
+<code>amberelectric.get_forecasts</code> action.</li>
+<li><strong>Advanced Price is not a sensor.</strong> Amber's own price
+prediction, which the Amber app uses, is only available through that
+action. Users have reported prices in Home Assistant differing from the
+app since the move to five-minute billing.</li>
+<li><strong>The forecast look-ahead shrank</strong> after the change to
+five-minute billing, because the integration fetches a fixed number of
+periods. A fix is waiting on a Home Assistant core change.</li>
+</ul>
+<p><a href="https://github.com/nickw444/amber-express">Amber
+Express</a> is a community alternative. It polls adaptively on each
+five-minute interval, can use AEMO or Amber-predicted pricing, and
+creates <code>sensor.amber_express_general_forecast</code> and
+<code>sensor.amber_express_feed_in_forecast</code>. It has not been
+tested here.</p>
+<p>Templates using the official integration's entities remain in
 <code>configuration.yaml</code> as <code>rest_command</code>
 definitions, but are <strong>superseded and not called by the production
-flow</strong>. They are retained as a fallback and as a worked
-example.</p>
-<blockquote>
-<p><strong>FIGURE 4 REQUIRED</strong> — Example of Amber tariff forecast
-data (import and export) as displayed in Home Assistant.</p>
-</blockquote>
+flow</strong>. They are retained only as a worked example, and the
+entities they read may no longer exist.</p>
+<figure id="fig4">
+<a href="figure-04-amber-forecast.png"><img src="figure-04-amber-forecast.png" alt="The Amber forecast sensor in Home Assistant Developer Tools. The Forecasts attribute carries one entry per half hour, with per_kwh, spot_per_kwh and the three advanced_price values that input_select.price_attr chooses between." loading="lazy" /></a>
+<figcaption>Figure 4. The Amber forecast sensor in Home Assistant Developer Tools. The Forecasts attribute carries one entry per half hour, with per_kwh, spot_per_kwh and the three advanced_price values that input_select.price_attr chooses between.</figcaption>
+</figure>
 <h2 id="solar-generation-forecast-solcast">Solar generation forecast —
 Solcast</h2>
 <p>PV output forecasts come from <a href="https://www.solcast.com">Solcast</a> via the <a href="https://github.com/BJReplay/ha-solcast-solar">Solcast HACS
@@ -870,10 +894,10 @@ Sustained consumption above 9,999 W in many half-hour periods would
 overflow the buffer. This has not occurred in practice but is a real
 constraint on the design.</p>
 </blockquote>
-<blockquote>
-<p><strong>FIGURE 5 REQUIRED</strong> — ApexCharts showing Solcast PV
-forecast overlaid with the load forecast from the FIFO buffer.</p>
-</blockquote>
+<figure id="fig5">
+<a href="figure-05-pv-load.png"><img src="figure-05-pv-load.png" alt="Solcast PV forecast against the household load forecast built from the FIFO buffer." loading="lazy" /></a>
+<figcaption>Figure 5. Solcast PV forecast against the household load forecast built from the FIFO buffer.</figcaption>
+</figure>
 <h2 id="forecast-horizon">Forecast horizon</h2>
 <p>The number of forward price intervals available from Amber varies
 through the day. Amber and AEMO publish a fresh 24-hour forecast from
@@ -912,8 +936,8 @@ March, June, July, August</li>
 <p>Prices already above $1.00/kWh are left untouched, so genuine price
 spikes are still visible and still exploitable.</p>
 <figure id="fig:demandtariff">
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NjAgNDcwIiB3aWR0aD0iOTYwIiBoZWlnaHQ9IjQ3MCIgZm9udC1mYW1pbHk9IlNlZ29lIFVJLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIj4KICA8cmVjdCB3aWR0aD0iOTYwIiBoZWlnaHQ9IjQ3MCIgZmlsbD0iI2ZmZmZmZiIvPgoKICA8IS0tID09PT09PT09PT09PT09PT09IFBBTkVMIDE6IE1PTlRIUyA9PT09PT09PT09PT09PT09PSAtLT4KICA8dGV4dCB4PSI0MCIgeT0iNDIiIGZvbnQtc2l6ZT0iMTMuNSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFjMjEyNiI+MSAmIzE4MzsgTW9udGhzIGluIHdoaWNoIHRoZSBkZW1hbmQgd2luZG93IGFwcGxpZXM8L3RleHQ+CiAgPHRleHQgeD0iNDAiIHk9IjYyIiBmb250LXNpemU9IjExLjUiIGZpbGw9IiM0YTU1NWYiPk5vdmVtYmVyIHRvIE1hcmNoLCBhbmQgSnVuZSB0byBBdWd1c3Q8L3RleHQ+CgogIDxnIGZvbnQtc2l6ZT0iMTIiPgogICAgPCEtLSAxMiBtb250aCBjZWxscywgNjhweCB3aWRlIC0tPgogICAgPCEtLSBKYW4gRiBNIEEgTSBKIEogQSBTIE8gTiBEIC0tPgogICAgPHJlY3QgeD0iNDAiICB5PSI3OCIgd2lkdGg9IjY4IiBoZWlnaHQ9IjQ2IiBmaWxsPSIjZjdkZmQwIiBzdHJva2U9IiNjMTg0NmEiLz4KICAgIDxyZWN0IHg9IjEwOCIgeT0iNzgiIHdpZHRoPSI2OCIgaGVpZ2h0PSI0NiIgZmlsbD0iI2Y3ZGZkMCIgc3Ryb2tlPSIjYzE4NDZhIi8+CiAgICA8cmVjdCB4PSIxNzYiIHk9Ijc4IiB3aWR0aD0iNjgiIGhlaWdodD0iNDYiIGZpbGw9IiNmN2RmZDAiIHN0cm9rZT0iI2MxODQ2YSIvPgogICAgPHJlY3QgeD0iMjQ0IiB5PSI3OCIgd2lkdGg9IjY4IiBoZWlnaHQ9IjQ2IiBmaWxsPSIjZjZmOGY5IiBzdHJva2U9IiNkM2RhZGUiLz4KICAgIDxyZWN0IHg9IjMxMiIgeT0iNzgiIHdpZHRoPSI2OCIgaGVpZ2h0PSI0NiIgZmlsbD0iI2Y2ZjhmOSIgc3Ryb2tlPSIjZDNkYWRlIi8+CiAgICA8cmVjdCB4PSIzODAiIHk9Ijc4IiB3aWR0aD0iNjgiIGhlaWdodD0iNDYiIGZpbGw9IiNkZGU3ZjIiIHN0cm9rZT0iIzdkOWRjMCIvPgogICAgPHJlY3QgeD0iNDQ4IiB5PSI3OCIgd2lkdGg9IjY4IiBoZWlnaHQ9IjQ2IiBmaWxsPSIjZGRlN2YyIiBzdHJva2U9IiM3ZDlkYzAiLz4KICAgIDxyZWN0IHg9IjUxNiIgeT0iNzgiIHdpZHRoPSI2OCIgaGVpZ2h0PSI0NiIgZmlsbD0iI2RkZTdmMiIgc3Ryb2tlPSIjN2Q5ZGMwIi8+CiAgICA8cmVjdCB4PSI1ODQiIHk9Ijc4IiB3aWR0aD0iNjgiIGhlaWdodD0iNDYiIGZpbGw9IiNmNmY4ZjkiIHN0cm9rZT0iI2QzZGFkZSIvPgogICAgPHJlY3QgeD0iNjUyIiB5PSI3OCIgd2lkdGg9IjY4IiBoZWlnaHQ9IjQ2IiBmaWxsPSIjZjZmOGY5IiBzdHJva2U9IiNkM2RhZGUiLz4KICAgIDxyZWN0IHg9IjcyMCIgeT0iNzgiIHdpZHRoPSI2OCIgaGVpZ2h0PSI0NiIgZmlsbD0iI2Y3ZGZkMCIgc3Ryb2tlPSIjYzE4NDZhIi8+CiAgICA8cmVjdCB4PSI3ODgiIHk9Ijc4IiB3aWR0aD0iNjgiIGhlaWdodD0iNDYiIGZpbGw9IiNmN2RmZDAiIHN0cm9rZT0iI2MxODQ2YSIvPgoKICAgIDx0ZXh0IHg9Ijc0IiAgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWMyMTI2Ij5KYW48L3RleHQ+CiAgICA8dGV4dCB4PSIxNDIiIHk9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMjEyNiI+RmViPC90ZXh0PgogICAgPHRleHQgeD0iMjEwIiB5PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxYzIxMjYiPk1hcjwvdGV4dD4KICAgIDx0ZXh0IHg9IjI3OCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOThhMmFhIj5BcHI8L3RleHQ+CiAgICA8dGV4dCB4PSIzNDYiIHk9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk4YTJhYSI+TWF5PC90ZXh0PgogICAgPHRleHQgeD0iNDE0IiB5PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxYzIxMjYiPkp1bjwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ4MiIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWMyMTI2Ij5KdWw8L3RleHQ+CiAgICA8dGV4dCB4PSI1NTAiIHk9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMjEyNiI+QXVnPC90ZXh0PgogICAgPHRleHQgeD0iNjE4IiB5PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OGEyYWEiPlNlcDwvdGV4dD4KICAgIDx0ZXh0IHg9IjY4NiIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOThhMmFhIj5PY3Q8L3RleHQ+CiAgICA8dGV4dCB4PSI3NTQiIHk9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMjEyNiI+Tm92PC90ZXh0PgogICAgPHRleHQgeD0iODIyIiB5PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxYzIxMjYiPkRlYzwvdGV4dD4KCiAgICA8dGV4dCB4PSIyMTAiIHk9IjExNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI5LjUiIGZpbGw9IiM4ZDVhM2YiPlNVTU1FUjwvdGV4dD4KICAgIDx0ZXh0IHg9Ijc0IiAgeT0iMTE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjkuNSIgZmlsbD0iIzhkNWEzZiI+U1VNTUVSPC90ZXh0PgogICAgPHRleHQgeD0iMTQyIiB5PSIxMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOS41IiBmaWxsPSIjOGQ1YTNmIj5TVU1NRVI8L3RleHQ+CiAgICA8dGV4dCB4PSI3NTQiIHk9IjExNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI5LjUiIGZpbGw9IiM4ZDVhM2YiPlNVTU1FUjwvdGV4dD4KICAgIDx0ZXh0IHg9IjgyMiIgeT0iMTE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjkuNSIgZmlsbD0iIzhkNWEzZiI+U1VNTUVSPC90ZXh0PgogICAgPHRleHQgeD0iNDE0IiB5PSIxMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOS41IiBmaWxsPSIjNDE2MzhjIj5XSU5URVI8L3RleHQ+CiAgICA8dGV4dCB4PSI0ODIiIHk9IjExNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI5LjUiIGZpbGw9IiM0MTYzOGMiPldJTlRFUjwvdGV4dD4KICAgIDx0ZXh0IHg9IjU1MCIgeT0iMTE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjkuNSIgZmlsbD0iIzQxNjM4YyI+V0lOVEVSPC90ZXh0PgogICAgPHRleHQgeD0iMjc4IiB5PSIxMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOS41IiBmaWxsPSIjYWFiM2JhIj5ub25lPC90ZXh0PgogICAgPHRleHQgeD0iMzQ2IiB5PSIxMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOS41IiBmaWxsPSIjYWFiM2JhIj5ub25lPC90ZXh0PgogICAgPHRleHQgeD0iNjE4IiB5PSIxMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOS41IiBmaWxsPSIjYWFiM2JhIj5ub25lPC90ZXh0PgogICAgPHRleHQgeD0iNjg2IiB5PSIxMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOS41IiBmaWxsPSIjYWFiM2JhIj5ub25lPC90ZXh0PgogIDwvZz4KCiAgPCEtLSA9PT09PT09PT09PT09PT09PSBQQU5FTCAyOiBEQUlMWSBXSU5ET1cgPT09PT09PT09PT09PT09PT0gLS0+CiAgPHRleHQgeD0iNDAiIHk9IjE3NiIgZm9udC1zaXplPSIxMy41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMWMyMTI2Ij4yICYjMTgzOyBUaGUgZGFpbHkgd2luZG93IHdpdGhpbiB0aG9zZSBtb250aHM8L3RleHQ+CiAgPHRleHQgeD0iNDAiIHk9IjE5NiIgZm9udC1zaXplPSIxMS41IiBmaWxsPSIjNGE1NTVmIj4xNTowMCB0byAyMTowMCBsb2NhbCB0aW1lPC90ZXh0PgoKICA8IS0tIDI0aCBiYXI6IHggZnJvbSA0MCB0byA4NTYsIDgxNnB4ID0gMjRoLCAzNHB4L2hvdXIgLS0+CiAgPHJlY3QgeD0iNDAiIHk9IjIxMiIgd2lkdGg9IjgxNiIgaGVpZ2h0PSI0OCIgZmlsbD0iI2Y2ZjhmOSIgc3Ryb2tlPSIjZDNkYWRlIi8+CiAgPHJlY3QgeD0iNTUwIiB5PSIyMTIiIHdpZHRoPSIyMDQiIGhlaWdodD0iNDgiIGZpbGw9IiNmOWUyZTIiIHN0cm9rZT0iI2MwNmE2YSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICA8dGV4dCB4PSI2NTIiIHk9IjIzNCIgZm9udC1zaXplPSIxMi41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjOTMzYjNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ERU1BTkQgV0lORE9XPC90ZXh0PgogIDx0ZXh0IHg9IjY1MiIgeT0iMjUxIiBmb250LXNpemU9IjExIiBmaWxsPSIjOTMzYjNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xNTowMCAmIzgyMTE7IDIxOjAwPC90ZXh0PgoKICA8IS0tIGhvdXIgdGlja3MgZXZlcnkgM2ggLS0+CiAgPGcgZm9udC1zaXplPSIxMCIgZmlsbD0iIzdhODU4ZSI+CiAgICA8bGluZSB4MT0iNDAiICB5MT0iMjYwIiB4Mj0iNDAiICB5Mj0iMjY4IiBzdHJva2U9IiNiOGMxYzciLz48dGV4dCB4PSI0MCIgIHk9IjI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDA8L3RleHQ+CiAgICA8bGluZSB4MT0iMTQyIiB5MT0iMjYwIiB4Mj0iMTQyIiB5Mj0iMjY4IiBzdHJva2U9IiNiOGMxYzciLz48dGV4dCB4PSIxNDIiIHk9IjI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDM8L3RleHQ+CiAgICA8bGluZSB4MT0iMjQ0IiB5MT0iMjYwIiB4Mj0iMjQ0IiB5Mj0iMjY4IiBzdHJva2U9IiNiOGMxYzciLz48dGV4dCB4PSIyNDQiIHk9IjI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDY8L3RleHQ+CiAgICA8bGluZSB4MT0iMzQ2IiB5MT0iMjYwIiB4Mj0iMzQ2IiB5Mj0iMjY4IiBzdHJva2U9IiNiOGMxYzciLz48dGV4dCB4PSIzNDYiIHk9IjI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDk8L3RleHQ+CiAgICA8bGluZSB4MT0iNDQ4IiB5MT0iMjYwIiB4Mj0iNDQ4IiB5Mj0iMjY4IiBzdHJva2U9IiNiOGMxYzciLz48dGV4dCB4PSI0NDgiIHk9IjI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTI8L3RleHQ+CiAgICA8bGluZSB4MT0iNTUwIiB5MT0iMjYwIiB4Mj0iNTUwIiB5Mj0iMjcyIiBzdHJva2U9IiNjMDZhNmEiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iNTUwIiB5PSIyODYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5MzNiM2IiIGZvbnQtd2VpZ2h0PSI2MDAiPjE1PC90ZXh0PgogICAgPGxpbmUgeDE9IjY1MiIgeTE9IjI2MCIgeDI9IjY1MiIgeTI9IjI2OCIgc3Ryb2tlPSIjYjhjMWM3Ii8+PHRleHQgeD0iNjUyIiB5PSIyODIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE4PC90ZXh0PgogICAgPGxpbmUgeDE9Ijc1NCIgeTE9IjI2MCIgeDI9Ijc1NCIgeTI9IjI3MiIgc3Ryb2tlPSIjYzA2YTZhIiBzdHJva2Utd2lkdGg9IjEuNSIvPjx0ZXh0IHg9Ijc1NCIgeT0iMjg2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTMzYjNiIiBmb250LXdlaWdodD0iNjAwIj4yMTwvdGV4dD4KICAgIDxsaW5lIHgxPSI4NTYiIHkxPSIyNjAiIHgyPSI4NTYiIHkyPSIyNjgiIHN0cm9rZT0iI2I4YzFjNyIvPjx0ZXh0IHg9Ijg1NiIgeT0iMjgyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDwvdGV4dD4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09PT09PT0gUEFORUwgMzogSE9XIENIQVJHRUQgLyBXT1JLQVJPVU5EID09PT09PT09PT09PT09PT09IC0tPgogIDx0ZXh0IHg9IjQwIiB5PSIzMzIiIGZvbnQtc2l6ZT0iMTMuNSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFjMjEyNiI+MyAmIzE4MzsgSG93IHRoZSBjaGFyZ2UgaXMgY2FsY3VsYXRlZCwgYW5kIGhvdyB0aGUgc3lzdGVtIGF2b2lkcyBpdDwvdGV4dD4KCiAgPHJlY3QgeD0iNDAiIHk9IjM0OCIgd2lkdGg9IjM5MiIgaGVpZ2h0PSIxMDAiIHJ4PSI2IiBmaWxsPSIjZjZmOGY5IiBzdHJva2U9IiNkM2RhZGUiLz4KICA8dGV4dCB4PSI2MCIgeT0iMzcxIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWMyMTI2Ij5BdXNncmlkJiM4MjE3O3MgY2hhcmdlPC90ZXh0PgogIDx0ZXh0IHg9IjYwIiB5PSIzOTIiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM0YTU1NWYiPlRoZSBzaW5nbGUgaGlnaGVzdCAzMC1taW51dGUgaW1wb3J0IHJlYWRpbmc8L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjQwOSIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzRhNTU1ZiI+aW4gdGhlIG1vbnRoLCB3aXRoaW4gdGhlIHdpbmRvdywgbXVsdGlwbGllZCBieTwvdGV4dD4KICA8dGV4dCB4PSI2MCIgeT0iNDI2IiBmb250LXNpemU9IjExIiBmaWxsPSIjNGE1NTVmIj50aGUgZGVtYW5kIHJhdGUgYW5kIHRoZSBkYXlzIGluIHRoZSBtb250aC48L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjQ0MyIgZm9udC1zaXplPSIxMC41IiBmaWxsPSIjOTMzYjNiIiBmb250LXN0eWxlPSJpdGFsaWMiPk9uZSBjYXJlbGVzcyBoYWxmIGhvdXIgc2V0cyB0aGUgd2hvbGUgbW9udGguPC90ZXh0PgoKICA8cmVjdCB4PSI0NjQiIHk9IjM0OCIgd2lkdGg9IjQ1NiIgaGVpZ2h0PSIxMDAiIHJ4PSI2IiBmaWxsPSIjZTZmMmVlIiBzdHJva2U9IiMwYjZlNGYiLz4KICA8dGV4dCB4PSI0ODQiIHk9IjM3MSIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBiNmU0ZiI+VGhlIHdvcmthcm91bmQgaW4gdGhpcyBzeXN0ZW08L3RleHQ+CiAgPHRleHQgeD0iNDg0IiB5PSIzOTIiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMzMTQ2M2YiPkluc2lkZSB0aGUgd2luZG93LCBhbnkgZm9yZWNhc3QgaW1wb3J0IHByaWNlIGJlbG93PC90ZXh0PgogIDx0ZXh0IHg9IjQ4NCIgeT0iNDA5IiBmb250LXNpemU9IjExIiBmaWxsPSIjMzE0NjNmIj4kMS4wMC9rV2ggaXMgcmV3cml0dGVuIHRvICQxLjAwL2tXaCBiZWZvcmUgdGhlPC90ZXh0PgogIDx0ZXh0IHg9IjQ4NCIgeT0iNDI2IiBmb250LXNpemU9IjExIiBmaWxsPSIjMzE0NjNmIj5NUEMgUE9TVC4gVGhlIG9wdGltaXNlciB0aGVuIGF2b2lkcyBncmlkIGltcG9ydDwvdGV4dD4KICA8dGV4dCB4PSI0ODQiIHk9IjQ0MyIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzMxNDYzZiI+YXMgb3JkaW5hcnkgZWNvbm9taWNzLiBHZW51aW5lIHNwaWtlcyBwYXNzIHRocm91Z2guPC90ZXh0Pgo8L3N2Zz4K" alt="The Ausgrid demand tariff window, and how the system avoids it." />
-<figcaption aria-hidden="true">The Ausgrid demand tariff window, and how
+<img src="figure-06-demand-tariff.svg" alt="The Ausgrid demand tariff window, and how the system avoids it." />
+<figcaption>Figure 6. The Ausgrid demand tariff window, and how
 the system avoids it.</figcaption>
 </figure>
 <h2 id="reactivity-the-alpha-and-beta-weights">Reactivity: the alpha and
@@ -1105,11 +1129,10 @@ in a Node-RED environment variable and referencing it as
 <code>env.get(&#39;SONNEN_TOKEN&#39;)</code> would remove the exposure and make
 rotation a one-line change.</p>
 </blockquote>
-<blockquote>
-<p><strong>FIGURE 7 REQUIRED</strong> — Screenshot of the sonnen
-Software Integration page showing the JSON API tab (with the token
-redacted).</p>
-</blockquote>
+<figure id="fig7">
+<a href="figure-07-sonnen-api.png"><img src="figure-07-sonnen-api.png" alt="The sonnen Software-Integration page, JSON API tab. Read API and Write API are both enabled; the API token is hidden." loading="lazy" /></a>
+<figcaption>Figure 7. The sonnen Software-Integration page, JSON API tab. Read API and Write API are both enabled; the API token is hidden.</figcaption>
+</figure>
 <h2 id="the-api-commands-used">The API commands used</h2>
 <p>Six calls cover everything this system needs.</p>
 <table>
@@ -1232,10 +1255,10 @@ dashboard.</p>
 </table>
 <p>Each is an <strong>HA Switch</strong> node with both <em>Enable
 input</em> and <em>Output on state change</em> ticked.</p>
-<blockquote>
-<p><strong>FIGURE 8 REQUIRED</strong> — Node-RED HA Switch node
-configuration panel.</p>
-</blockquote>
+<figure id="fig8">
+<a href="figure-08-ha-switch-node.png"><img src="figure-08-ha-switch-node.png" alt="A Node-RED HA Switch node (Sonnen Standby), with Enable input and Output on state change ticked." loading="lazy" /></a>
+<figcaption>Figure 8. A Node-RED HA Switch node (Sonnen Standby), with Enable input and Output on state change ticked.</figcaption>
+</figure>
 <h3 id="mode-selection-behaviour">Mode-selection behaviour</h3>
 <p>The five switches behave as a set of mutually exclusive push buttons.
 Selecting one triggers a <strong>Call Service</strong> node for each of
@@ -1248,10 +1271,10 @@ except dim its own icon.</p>
 that the connections do not clutter the canvas. A one-second delay node
 sits in front of each call service node; it is almost certainly
 unnecessary and is retained only because it is harmless.</p>
-<blockquote>
-<p><strong>FIGURE 9 REQUIRED</strong> — Node-RED canvas showing the five
-manual control switches and their link-out wiring.</p>
-</blockquote>
+<figure id="fig9">
+<a href="figure-09-manual-switches.png"><img src="figure-09-manual-switches.png" alt="The five manual control switches and their link-out nodes. Charge and Discharge each have a Rate node holding the slider value." loading="lazy" /></a>
+<figcaption>Figure 9. The five manual control switches and their link-out nodes. Charge and Discharge each have a Rate node holding the slider value.</figcaption>
+</figure>
 <h3 id="flow-enable-switches-switches-611">Flow-enable switches
 (switches 6–11)</h3>
 <p>The remaining switches enable or disable entire Node-RED flows rather
@@ -1302,11 +1325,10 @@ See <a href="#load-following">Load following</a></td>
 </tbody>
 </table>
 <p><strong>Battery Polling has been removed.</strong> It was written to address a fault in which the sonnen battery would silently stop following its setpoint, by comparing actual power with the plan every five minutes. Its job is now done by the not-obeying check in the <a href="#load-following">load-following</a> decision node, which also knows about the battery's mode and the plan, so the separate switch, flow and status helper were deleted.</p>
-<blockquote>
-<p><strong>FIGURE 10 REQUIRED</strong> — Home Assistant dashboard card
-showing the control switches, with one mode active and the others
-dimmed.</p>
-</blockquote>
+<figure id="fig10">
+<a href="figure-10-energy-controls.png"><img src="figure-10-energy-controls.png" alt="The Energy Controls dashboard card. Here Manual Mode and Charge are lit and the other modes are dimmed." loading="lazy" /></a>
+<figcaption>Figure 10. The Energy Controls dashboard card. Here Manual Mode and Charge are lit and the other modes are dimmed.</figcaption>
+</figure>
 <h2 id="the-api-call-flows">The API call flows</h2>
 <p>Each of the six API calls is implemented as a <strong>function
 node</strong> that builds the request, feeding an <strong>http
@@ -1413,10 +1435,10 @@ overridden within a minute.</p>
 sending a zero setpoint. Sending zero to the charge or discharge
 endpoint does not reliably hold the battery. The zero setpoint is sent
 anyway, harmlessly, alongside the buffer change.</p>
-<blockquote>
-<p><strong>FIGURE 11 REQUIRED</strong> — Node-RED switch node
-configuration showing the three routing rules.</p>
-</blockquote>
+<figure id="fig11">
+<a href="figure-11-switch-node.png"><img src="figure-11-switch-node.png" alt="The routing switch node: below 0 goes to output 1 (charge), equal to 0 to output 2 (standby), above 0 to output 3 (discharge)." loading="lazy" /></a>
+<figcaption>Figure 11. The routing switch node: below 0 goes to output 1 (charge), equal to 0 to output 2 (standby), above 0 to output 3 (discharge).</figcaption>
+</figure>
 <h1 id="the-mpc-cycle">The MPC cycle</h1>
 <h2 id="flow-structure">Flow structure</h2>
 <p>The MPC flow is a straight line of six nodes:</p>
@@ -1435,6 +1457,11 @@ POST (<code>msg.payload</code> becomes <code>{}</code>).</li>
 <li><strong>HTTP request node</strong> — POSTs to
 <code>http://&lt;emhass&gt;:5000/action/publish-data</code>.</li>
 </ol>
+<p>The canvas (Figure 12) adds a few details. A second inject node
+supplies a timestamp to the template, and a disabled five-minute inject
+is kept for testing. A “POST return != 201” function checks the result
+of the publish call; a failure sends a phone notification and writes a
+line to the error log file.</p>
 <p>Both HTTP request nodes feed error-handling function nodes, described
 in <a href="#resilience-and-health-monitoring">Resilience and health
 monitoring</a>.</p>
@@ -1444,10 +1471,10 @@ Clearer error handling, easier iteration, and far more tractable data
 transformation. The equivalent <code>rest_command</code> definitions
 still exist in <code>configuration.yaml</code> but are not called.</p>
 </blockquote>
-<blockquote>
-<p><strong>FIGURE 12 REQUIRED</strong> — Node-RED canvas showing the
-60-second MPC POST and publish flow.</p>
-</blockquote>
+<figure id="fig12">
+<a href="figure-12-mpc-flow.png"><img src="figure-12-mpc-flow.png" alt="The 60-second MPC flow: triggers, MPC Array template, optimise POST, publish POST, and the error check that notifies and logs." loading="lazy" /></a>
+<figcaption>Figure 12. The 60-second MPC flow: triggers, MPC Array template, optimise POST, publish POST, and the error check that notifies and logs.</figcaption>
+</figure>
 <h2 id="developing-the-template">Developing the template</h2>
 <p>The template is the part that takes the longest to get right. Two
 tools make it manageable:</p>
@@ -1706,6 +1733,18 @@ prevents a stream of identical API calls every minute.</p></li>
 <li><p><strong>Command.</strong> Set the charging amps and start
 charging.</p></li>
 </ol>
+<h3 id="tesla-verify-and-stop">Verification and the stop path</h3>
+<p>The canvas (Figure 13) shows that charging commands are verified
+rather than assumed to work. After the amps are set and charging is
+started, the flow waits, reads the car's charge state back and checks
+that it matches. If it does not, a retry back-off re-issues the amps
+command. Errors from the command nodes are caught and routed into the
+same check. A function node limits the phone notification to one per
+charging request.</p>
+<p>Stopping takes a separate path: a “Send Once” function node turns off
+the charge switch when the plan drops to zero, and the emulated charge
+power is set to zero. This path is under review; see
+<a href="#planned-work">Planned work</a>.</p>
 <h3 id="tesla-api-polling-strategy">Tesla API polling strategy</h3>
 <p>Tesla’s Fleet API is billed. A separate flow manages polling cadence
 against a daily budget:</p>
@@ -1751,19 +1790,23 @@ delivered charge power would be better than emulation. The most
 promising options are a metering circuit at the wall connector, or a
 Tesla telemetry field that proves trustworthy under test.</p>
 </blockquote>
-<blockquote>
-<p><strong>FIGURE 13 REQUIRED</strong> — Node-RED canvas of the Tesla
-deferrable load flow.</p>
-</blockquote>
-<blockquote>
-<p><strong>FIGURE 14 REQUIRED</strong> — Node-RED canvas of the pool
-pump deferrable load flow.</p>
-</blockquote>
+<figure id="fig13">
+<a href="figure-13-tesla-flow.png"><img src="figure-13-tesla-flow.png" alt="The Tesla deferrable load flow, including the verify-and-retry path and the stop path. Click to enlarge." loading="lazy" /></a>
+<figcaption>Figure 13. The Tesla deferrable load flow, including the verify-and-retry path and the stop path. Click to enlarge.</figcaption>
+</figure>
+<figure id="fig14">
+<a href="figure-14-pool-pump-flow.png"><img src="figure-14-pool-pump-flow.png" alt="The pool pump flow: a change in sensor.p_deferrable0 switches the smart power point on or off." loading="lazy" /></a>
+<figcaption>Figure 14. The pool pump flow: a change in sensor.p_deferrable0 switches the smart power point on or off.</figcaption>
+</figure>
 <h1 id="load-following">Load following</h1>
 <h2 id="why-load-following">Why it exists</h2>
 <p>EMHASS plans in 30-minute steps from forecasts. The house does not follow the forecast. If the battery is sent the plan's figure exactly, any difference between planned and real load goes straight to the grid, as an unplanned import or export.</p>
 <p>Load following lets the battery absorb that difference. When the plan expects the grid to be near zero, the battery is put in automatic self-consumption, which tracks the house second by second. When the plan expects real grid flow, usually an export for a price spike, the battery is held at the plan's figure in manual mode.</p>
 <p>A decision node runs <strong>once a minute</strong> and makes this choice. Every action it takes goes through the <a href="#command-runner">command runner</a>.</p>
+<figure id="fig20">
+<a href="figure-20-load-follow-flow.png"><img src="figure-20-load-follow-flow.png" alt="The load-following flow: the 60-second trigger, plan and gates template, decision node and command runner, beside the existing API call nodes." loading="lazy" /></a>
+<figcaption>Figure 20. The load-following flow: the 60-second trigger, plan and gates template, decision node and command runner, beside the existing API call nodes.</figcaption>
+</figure>
 <h2 id="decision-inputs">Decision inputs</h2>
 <p>A Render Template node (“Read plan + gates”) gathers everything the decision needs into one JSON object:</p>
 <table>
@@ -1863,18 +1906,26 @@ upon.</p>
 <p>A dedicated flow watches this sensor. On a transition to
 <code>Infeasible</code> it:</p>
 <ol type="1">
-<li>Turns off the EMHASS control switches, disconnecting the optimiser
+<li>Turns off the EMHASS power control switch
+(<code>switch.emhass_fpow_control</code>), disconnecting the optimiser
 from the battery.</li>
-<li>Turns off the deferrable load control switches.</li>
-<li>Switches the battery to automatic self-consumption mode.</li>
+<li>After one second, switches the battery to automatic self-consumption
+mode.</li>
+<li>Sends a phone notification.</li>
 </ol>
-<p>The same flow reverses all three steps when the status returns to
-<code>Optimal</code>, so recovery is automatic and requires no
-intervention.</p>
-<blockquote>
-<p><strong>FIGURE 15 REQUIRED</strong> — Node-RED canvas of the
-Optimal/Infeasible handling flow.</p>
-</blockquote>
+<p>When the status returns to <code>Optimal</code> the flow waits 60
+seconds, turns the control switch back on and sends a second
+notification, so recovery is automatic and requires no intervention.
+The deferrable load switches are not touched. The control switch is also
+one of the <a href="#safety-checks">load-following safety checks</a>, so
+load following stands down while the plan is infeasible.</p>
+<p>This flow was added when battery sells were failing and an
+infeasible state was occurring regularly. It has not fired in normal
+operation since.</p>
+<figure id="fig15">
+<a href="figure-15-infeasible-flow.png"><img src="figure-15-infeasible-flow.png" alt="Handling of an infeasible optimisation: controls off and automatic mode on, then controls back on after 60 seconds once the status is Optimal." loading="lazy" /></a>
+<figcaption>Figure 15. Handling of an infeasible optimisation: controls off and automatic mode on, then controls back on after 60 seconds once the status is Optimal.</figcaption>
+</figure>
 <h2 id="battery-api-error-handling">Battery API error handling</h2>
 <p>The sonnen API is the single point of failure for battery control,
 and it fails in several distinguishable ways. A structured
@@ -2097,10 +2148,10 @@ one notification is sent per transition, not one per poll.</p>
 charge from surplus PV and discharge to cover house load with no
 external data at all. The household loses arbitrage revenue during the
 outage but nothing worse.</p>
-<blockquote>
-<p><strong>FIGURE 16 REQUIRED</strong> — Node-RED canvas of the internet
-outage state machine.</p>
-</blockquote>
+<figure id="fig16">
+<a href="figure-16-outage-flow.png"><img src="figure-16-outage-flow.png" alt="The internet outage state machine and its notifications." loading="lazy" /></a>
+<figcaption>Figure 16. The internet outage state machine and its notifications.</figcaption>
+</figure>
 <h2 id="battery-state-and-mode-verification">Battery state and mode
 verification</h2>
 <p>Commanding the battery is not the same as knowing what it is doing.
@@ -2307,8 +2358,47 @@ The custom cards in use are:</p>
 <td><code>custom:card-templater</code></td>
 <td>Templated cards for computed values</td>
 </tr>
+<tr class="odd">
+<td><code>custom:button-card</code></td>
+<td>Current Amber 5-minute import and feed-in prices, coloured by price descriptor; demand-window shield; Tesla and pool tiles</td>
+</tr>
+<tr class="even">
+<td><code>custom:slider-button-card</code></td>
+<td>Sliders for charge rate, discharge rate and EV amps in the Energy Controls section</td>
+</tr>
+<tr class="odd">
+<td><code>custom:bar-card</code></td>
+<td>Tesla battery level bar. Two empty bar-card entries on the main dashboard are leftovers</td>
+</tr>
+<tr class="even">
+<td><code>custom:platinum-weather-card</code>, <code>custom:weather-radar-card</code></td>
+<td>Weather and rain radar (not part of the energy system)</td>
+</tr>
 </tbody>
 </table>
+<h2 id="dashboard-views">Dashboard views</h2>
+<p>The main dashboard is a sections view with four columns, followed by
+sub-views. The iPhone dashboard is a single wide panel.</p>
+<ul>
+<li><strong>Home (main)</strong> — Forecast Charts, Actual Current Energy Metrics, Energy Controls and Other Metrics. Every section heading links to the Tariffs view.</li>
+<li><strong>Energy Controls</strong> — mode tiles, charge and discharge buttons and sliders, EV amps slider, and a glance row with the four gates: Power Forecast Control, Load Follow, Tesla deferrable and Pool deferrable.</li>
+<li><strong>Status glance row</strong> — last Sonnen message, EMHASS optimisation status, operating mode, days since full charge and the No Discharge flag.</li>
+<li><strong>Tesla</strong> — picture-elements card showing charge state, cable, limit and sleep status, with wake and refresh buttons.</li>
+<li><strong>Tariffs, Charts, Tariff</strong> — larger copies of the forecast charts.</li>
+<li><strong>Amber diagnostics</strong> — official-integration sensors side by side with the amber2mqtt sensors, the API rate-limit graph, a battery fade check, the forecast-vs-actual SOC chart, price spread charts (predicted, low, high, per_kwh) and tariff gauges.</li>
+<li><strong>Batteries</strong> — one gauge per household sensor battery.</li>
+<li><strong>Other</strong> — lights, switches, cameras, motion sensors, ESP32 cameras, Fully Kiosk tablet, TV and doorbell.</li>
+</ul>
+<p>The iPhone dashboard repeats the power flow card, the forecast chart,
+the price tiles, a demand-window tile, security sensors, lights, weather
+and a short list of switches.</p>
+<h3 id="dashboard-known-issues">Known inconsistencies</h3>
+<ul>
+<li>The main Home charts follow <code>input_select.price_attr</code>, but the Tariffs, Charts, Tariff and iPhone charts are fixed to <code>advanced_price_predicted</code>. Changing the selector does not change them.</li>
+<li>Two demand-window sensors are in use: <code>binary_sensor.cecil_st_demand_window</code> (official Amber integration) and <code>binary_sensor.amber_demand_window</code> (iPhone only). The tariff logic should rely on one.</li>
+<li>The Home dashboard shows no data-freshness or control-health indicators yet. That is the natural place to add them.</li>
+<li>Batteries view: <code>sensor.left_level_2_bedroom_battery</code> is used twice (as the bedroom and the windows gauge), so one of the sensors is probably wrong. The iPhone glance row labels the right dining window "R Living RW".</li>
+</ul>
 <h2 id="dashboard-design-principles">Dashboard design principles</h2>
 <p>The dashboards have grown organically and are due for a deliberate
 rework. The intended structure:</p>
@@ -2351,14 +2441,14 @@ rework. The intended structure:</p>
 <li>Charge and discharge sliders</li>
 <li>Pool pump hours and EV amps inputs</li>
 </ul>
-<blockquote>
-<p><strong>FIGURE 17 REQUIRED</strong> — Screenshot of the operational
-dashboard view.</p>
-</blockquote>
-<blockquote>
-<p><strong>FIGURE 18 REQUIRED</strong> — Screenshot of the planning
-dashboard view with forecast charts.</p>
-</blockquote>
+<figure id="fig17">
+<a href="figure-17-operational-dashboard.png"><img src="figure-17-operational-dashboard.png" alt="The operational dashboard view: live metrics, tariffs, power flow and battery mode controls." loading="lazy" /></a>
+<figcaption>Figure 17. The operational dashboard view: live metrics, tariffs, power flow and battery mode controls.</figcaption>
+</figure>
+<figure id="fig18">
+<a href="figure-18-planning-dashboard.png"><img src="figure-18-planning-dashboard.png" alt="The planning dashboard view: the 24-hour energy flow forecast and the price and state of charge forecast." loading="lazy" /></a>
+<figcaption>Figure 18. The planning dashboard view: the 24-hour energy flow forecast and the price and state of charge forecast.</figcaption>
+</figure>
 <h1 id="the-emhass-web-interface">The EMHASS web interface</h1>
 <p>EMHASS presents a web UI in the Home Assistant sidebar. In normal
 operation there is no reason to open it: everything is driven by the
@@ -2990,7 +3080,7 @@ identical to those used in the output.</p>
 <h1 id="appendix-c-day-ahead-template">Appendix C — Day-ahead
 template</h1>
 <p>Retained for development and comparison. Note that it still
-references the <strong>legacy Amber integration entities</strong>
+references the <strong>old official-integration entities</strong>
 (<code>sensor.cecil_st_*</code>) rather than the amber2mqtt entities
 used in production, and would need updating before use.</p>
 <pre class="jinja"><code>{
@@ -3271,10 +3361,10 @@ itself</strong> — so element <code>[0]</code> is in practice the correct
 <p>This is an empirical correction to observed behaviour, not a
 documented feature, which is one of several reasons this method has not
 been promoted to production.</p>
-<blockquote>
-<p><strong>FIGURE 19 REQUIRED</strong> — ApexCharts showing
-<code>soc_batt_forecast</code> offset relative to actual SOC.</p>
-</blockquote>
+<figure id="fig19">
+<a href="figure-19-soc-offset.png"><img src="figure-19-soc-offset.png" alt="Forecast SOC against actual SOC. The forecast line starts about half an interval ahead of the actual value. The headline forecast figure is the sensor state, not the plotted attribute." loading="lazy" /></a>
+<figcaption>Figure 19. Forecast SOC against actual SOC. The forecast line starts about half an interval ahead of the actual value. The headline forecast figure is the sensor state, not the plotted attribute.</figcaption>
+</figure>
 <h1 id="appendix-e-entity-reference">Appendix E — Entity reference</h1>
 <h2 id="battery-sonnen-integration">Battery — sonnen integration</h2>
 <table>
@@ -3601,6 +3691,33 @@ stale</strong>)</td>
 </tr>
 </tbody>
 </table>
+<h2 id="dashboard-only-entities">Entities used only on dashboards</h2>
+<table>
+<caption>Dashboard entities</caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Entity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd"><td><code>sensor.sonnen_operatingmessage</code>, <code>sensor.sonnen_operatingmode</code></td><td>Last Sonnen API message and current operating mode</td></tr>
+<tr class="even"><td><code>binary_sensor.discharge_not_allowed</code></td><td>"No Discharge" flag</td></tr>
+<tr class="odd"><td><code>switch.sonnen_charge_2</code>, <code>switch.sonnen_discharge_2</code></td><td>Charge and discharge buttons on the dashboard</td></tr>
+<tr class="even"><td><code>input_number.charge_rate</code>, <code>input_number.discharge_rate</code></td><td>Manual charge and discharge power sliders</td></tr>
+<tr class="odd"><td><code>switch.pool_deferrable_load</code>, <code>switch.tesla_deferrable_load</code></td><td>Gates for the two deferrable loads</td></tr>
+<tr class="even"><td><code>button.ynot_force_data_update</code>, <code>button.ynot_wake</code></td><td>Wake and refresh the Tesla</td></tr>
+<tr class="odd"><td><code>sensor.ynot_home_charge</code></td><td>Tesla charge power shown on the power flow card</td></tr>
+<tr class="even"><td><code>sensor.rate_limit_remaining</code></td><td>Remaining Amber API calls (graph on the diagnostics view)</td></tr>
+<tr class="odd"><td><code>sensor.bms_discharge_limit</code>, <code>sensor.bms_cell_temperature</code>, <code>sensor.sonnen_inverter_temperature</code>, <code>sensor.battery_dc_voltage</code></td><td>Battery fade check graph: shows whether power falls as cells warm or the BMS limit drops</td></tr>
+<tr class="even"><td><code>sensor.amber_5min_current_general_price</code>, <code>sensor.amber_5min_current_feed_in_price</code> and their <code>_descriptor</code> sensors</td><td>Live 5-minute prices from amber2mqtt, used for tile colours</td></tr>
+<tr class="odd"><td><code>sensor.amber_general_price_forecast_5ms</code>, <code>_current_5ms</code> and the feed-in equivalents</td><td>Amber 5-minute-settlement sensors shown on the diagnostics view</td></tr>
+</tbody>
+</table>
 <h1 id="appendix-f-glossary">Appendix F — Glossary</h1>
 <p><strong>AEMO</strong> — Australian Energy Market Operator. Operates
 the National Electricity Market and publishes the price forecasts
@@ -3678,6 +3795,10 @@ control.</p>
 <td><a href="https://github.com/cabberley/amber2mqtt-addon" class="uri">https://github.com/cabberley/amber2mqtt-addon</a></td>
 </tr>
 <tr class="even">
+<td>Amber Express (community integration)</td>
+<td><a href="https://github.com/nickw444/amber-express" class="uri">https://github.com/nickw444/amber-express</a></td>
+</tr>
+<tr class="odd">
 <td>Amber Electric HA integration</td>
 <td><a href="https://www.home-assistant.io/integrations/amberelectric/" class="uri">https://www.home-assistant.io/integrations/amberelectric/</a></td>
 </tr>

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4a555f"/>
+    </marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0b6e4f"/>
+    </marker>
+    <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a5a00"/>
+    </marker>
+  </defs>
+  <rect width="960" height="700" fill="#ffffff"/>
+
+  <!-- ============ BAND LABELS ============ -->
+  <text x="20" y="46" font-size="11" font-weight="700" fill="#8f9aa3" letter-spacing="1.6">EXTERNAL SERVICES</text>
+  <text x="20" y="196" font-size="11" font-weight="700" fill="#8f9aa3" letter-spacing="1.6">SOFTWARE PLATFORM</text>
+  <text x="20" y="560" font-size="11" font-weight="700" fill="#8f9aa3" letter-spacing="1.6">HARDWARE</text>
+
+  <!-- ============ EXTERNAL SERVICES ============ -->
+  <g>
+    <rect x="40" y="76" width="230" height="86" rx="7" fill="#f6f8f9" stroke="#c9d2d8"/>
+    <text x="155" y="104" font-size="14.5" font-weight="600" fill="#1c2126" text-anchor="middle">Amber Electric</text>
+    <text x="155" y="124" font-size="11.5" fill="#4a555f" text-anchor="middle">Wholesale NEM prices</text>
+    <text x="155" y="142" font-size="11" fill="#7a858e" text-anchor="middle">via amber2mqtt · 5-min settlement</text>
+
+    <rect x="300" y="76" width="200" height="86" rx="7" fill="#f6f8f9" stroke="#c9d2d8"/>
+    <text x="400" y="104" font-size="14.5" font-weight="600" fill="#1c2126" text-anchor="middle">Solcast</text>
+    <text x="400" y="124" font-size="11.5" fill="#4a555f" text-anchor="middle">PV generation forecast</text>
+    <text x="400" y="142" font-size="11" fill="#7a858e" text-anchor="middle">HACS · 5 polls/day</text>
+
+    <rect x="530" y="76" width="200" height="86" rx="7" fill="#f6f8f9" stroke="#c9d2d8"/>
+    <text x="630" y="104" font-size="14.5" font-weight="600" fill="#1c2126" text-anchor="middle">Tesla Fleet API</text>
+    <text x="630" y="124" font-size="11.5" fill="#4a555f" text-anchor="middle">EV state and control</text>
+    <text x="630" y="142" font-size="11" fill="#7a858e" text-anchor="middle">metered · budget gated</text>
+  </g>
+
+  <!-- ============ HOME ASSISTANT ============ -->
+  <rect x="40" y="226" width="500" height="118" rx="8" fill="#ffffff" stroke="#0b6e4f" stroke-width="1.8"/>
+  <text x="60" y="252" font-size="15.5" font-weight="700" fill="#0b6e4f">Home Assistant</text>
+  <text x="60" y="272" font-size="11.5" fill="#4a555f">Entity state · integrations · dashboards · Recorder</text>
+  <rect x="60" y="286" width="140" height="42" rx="5" fill="#f6f8f9" stroke="#dfe4e8"/>
+  <text x="130" y="303" font-size="10.5" fill="#4a555f" text-anchor="middle">Price / PV / load</text>
+  <text x="130" y="318" font-size="10.5" fill="#4a555f" text-anchor="middle">sensors</text>
+  <rect x="212" y="286" width="140" height="42" rx="5" fill="#f6f8f9" stroke="#dfe4e8"/>
+  <text x="282" y="303" font-size="10.5" fill="#4a555f" text-anchor="middle">EMHASS output</text>
+  <text x="282" y="318" font-size="10.5" fill="#4a555f" text-anchor="middle">sensors</text>
+  <rect x="364" y="286" width="156" height="42" rx="5" fill="#f6f8f9" stroke="#dfe4e8"/>
+  <text x="442" y="303" font-size="10.5" fill="#4a555f" text-anchor="middle">Helpers, switches,</text>
+  <text x="442" y="318" font-size="10.5" fill="#4a555f" text-anchor="middle">health flags</text>
+
+  <!-- ============ EMHASS ============ -->
+  <rect x="600" y="226" width="320" height="118" rx="8" fill="#e6f2ee" stroke="#0b6e4f" stroke-width="1.8"/>
+  <text x="620" y="252" font-size="15.5" font-weight="700" fill="#0b6e4f">EMHASS v0.13.5</text>
+  <text x="620" y="272" font-size="11.5" fill="#31463f">Linear optimiser · stateless</text>
+  <text x="620" y="296" font-size="11" fill="#31463f">POST /action/naive-mpc-optim</text>
+  <text x="620" y="314" font-size="11" fill="#31463f">POST /action/publish-data</text>
+  <text x="620" y="334" font-size="10.5" fill="#5b7a6e">Cost function: profit · 30-min steps</text>
+
+  <!-- ============ NODE-RED ============ -->
+  <rect x="40" y="392" width="880" height="140" rx="8" fill="#ffffff" stroke="#0b6e4f" stroke-width="2.4"/>
+  <text x="60" y="419" font-size="15.5" font-weight="700" fill="#0b6e4f">Node-RED &#8212; all orchestration</text>
+  <text x="60" y="438" font-size="11.5" fill="#4a555f">Every 60 seconds: assemble forecasts &#8594; optimise &#8594; publish &#8594; act</text>
+
+  <rect x="60" y="452" width="196" height="60" rx="5" fill="#f6f8f9" stroke="#dfe4e8"/>
+  <text x="158" y="472" font-size="11.5" font-weight="600" fill="#1c2126" text-anchor="middle">Forecast assembly</text>
+  <text x="158" y="489" font-size="10.5" fill="#4a555f" text-anchor="middle">Jinja2 template</text>
+  <text x="158" y="504" font-size="10.5" fill="#4a555f" text-anchor="middle">FIFO load buffer</text>
+
+  <rect x="268" y="452" width="196" height="60" rx="5" fill="#f6f8f9" stroke="#dfe4e8"/>
+  <text x="366" y="472" font-size="11.5" font-weight="600" fill="#1c2126" text-anchor="middle">Battery control</text>
+  <text x="366" y="489" font-size="10.5" fill="#4a555f" text-anchor="middle">mode, charge, discharge</text>
+  <text x="366" y="504" font-size="10.5" fill="#4a555f" text-anchor="middle">standby, backup buffer</text>
+
+  <rect x="476" y="452" width="196" height="60" rx="5" fill="#f6f8f9" stroke="#dfe4e8"/>
+  <text x="574" y="472" font-size="11.5" font-weight="600" fill="#1c2126" text-anchor="middle">Deferrable loads</text>
+  <text x="574" y="489" font-size="10.5" fill="#4a555f" text-anchor="middle">pool pump on/off</text>
+  <text x="574" y="504" font-size="10.5" fill="#4a555f" text-anchor="middle">EV charge amperage</text>
+
+  <rect x="684" y="452" width="216" height="60" rx="5" fill="#fdf5e4" stroke="#e0cfa4"/>
+  <text x="792" y="472" font-size="11.5" font-weight="600" fill="#6b4700" text-anchor="middle">Resilience</text>
+  <text x="792" y="489" font-size="10.5" fill="#6b4700" text-anchor="middle">API errors · outage state machine</text>
+  <text x="792" y="504" font-size="10.5" fill="#6b4700" text-anchor="middle">infeasible handling · health flags</text>
+
+  <!-- ============ HARDWARE ============ -->
+  <rect x="40" y="590" width="238" height="80" rx="7" fill="#f6f8f9" stroke="#c9d2d8"/>
+  <text x="159" y="616" font-size="14" font-weight="600" fill="#1c2126" text-anchor="middle">sonnen eco 9.43</text>
+  <text x="159" y="635" font-size="11" fill="#4a555f" text-anchor="middle">15 kWh · 3,300 W</text>
+  <text x="159" y="653" font-size="10.5" fill="#7a858e" text-anchor="middle">local JSON API v2 (HTTP)</text>
+
+  <rect x="298" y="590" width="222" height="80" rx="7" fill="#ffffff" stroke="#c9a961" stroke-dasharray="5 4"/>
+  <text x="409" y="616" font-size="14" font-weight="600" fill="#6b4700" text-anchor="middle">Fronius Primo 6.0-1</text>
+  <text x="409" y="635" font-size="11" fill="#6b4700" text-anchor="middle">17 panels · 5.0 kWp</text>
+  <text x="409" y="653" font-size="10.5" fill="#8a5a00" text-anchor="middle">Modbus TCP &#8212; planned</text>
+
+  <rect x="540" y="590" width="176" height="80" rx="7" fill="#f6f8f9" stroke="#c9d2d8"/>
+  <text x="628" y="616" font-size="14" font-weight="600" fill="#1c2126" text-anchor="middle">Pool pump</text>
+  <text x="628" y="635" font-size="11" fill="#4a555f" text-anchor="middle">1,300 W fixed</text>
+  <text x="628" y="653" font-size="10.5" fill="#7a858e" text-anchor="middle">metering smart switch</text>
+
+  <rect x="736" y="590" width="184" height="80" rx="7" fill="#f6f8f9" stroke="#c9d2d8"/>
+  <text x="828" y="616" font-size="14" font-weight="600" fill="#1c2126" text-anchor="middle">Tesla EV</text>
+  <text x="828" y="635" font-size="11" fill="#4a555f" text-anchor="middle">up to 7,360 W variable</text>
+  <text x="828" y="653" font-size="10.5" fill="#7a858e" text-anchor="middle">230 V wall connector</text>
+
+  <!-- ============ ARROWS ============ -->
+  <!-- external into HA -->
+  <path d="M155 162 L155 226" stroke="#4a555f" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M400 162 L400 226" stroke="#4a555f" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M630 162 L630 186 L470 186 L470 226" stroke="#4a555f" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+
+  <!-- HA <-> Node-RED -->
+  <path d="M200 344 L200 392" stroke="#0b6e4f" stroke-width="1.8" fill="none" marker-end="url(#ag)"/>
+  <path d="M330 392 L330 344" stroke="#0b6e4f" stroke-width="1.8" fill="none" marker-end="url(#ag)"/>
+  <text x="212" y="372" font-size="10" fill="#0b6e4f">read state</text>
+  <text x="342" y="372" font-size="10" fill="#0b6e4f">write commands</text>
+
+  <!-- Node-RED <-> EMHASS -->
+  <path d="M700 392 L700 344" stroke="#0b6e4f" stroke-width="1.8" fill="none" marker-end="url(#ag)"/>
+  <path d="M830 344 L830 392" stroke="#0b6e4f" stroke-width="1.8" fill="none" marker-end="url(#ag)"/>
+  <text x="600" y="372" font-size="10" fill="#0b6e4f" text-anchor="end">POST forecasts</text>
+  <text x="842" y="372" font-size="10" fill="#0b6e4f">plan</text>
+
+  <!-- Node-RED to hardware -->
+  <path d="M159 532 L159 590" stroke="#4a555f" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M628 532 L628 590" stroke="#4a555f" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M828 532 L828 590" stroke="#4a555f" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M409 532 L409 590" stroke="#8a5a00" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#ad)"/>
+</svg>
