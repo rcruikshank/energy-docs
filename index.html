@@ -160,8 +160,8 @@ a{color:var(--ink);border:none}
   <h1>Home Energy Management with EMHASS</h1>
   <p class="subtitle">A working configuration for a sonnen eco 9.43
 battery, Fronius Primo inverter and Amber Electric wholesale pricing</p>
-  <p class="meta">Robert Cruikshank  |  August 2026 — EMHASS
-v0.13.5 — Revision 3</p>
+  <p class="meta">Robert Cruikshank  |  October 2026 — EMHASS
+v0.13.5 — Revision 4</p>
 </header>
 
 <nav id="TOC" role="doc-toc">
@@ -274,6 +274,16 @@ limits</a></li>
 <li><a href="#electric-vehicle-1" id="toc-electric-vehicle-1">Electric
 vehicle</a></li>
 </ul></li>
+<li><a href="#load-following" id="toc-load-following">Load following</a>
+<ul>
+<li><a href="#why-load-following">Why it exists</a></li>
+<li><a href="#decision-inputs">Decision inputs</a></li>
+<li><a href="#decision-rules">Decision rules</a></li>
+<li><a href="#safety-checks">Safety checks</a></li>
+<li><a href="#command-runner">The command runner</a></li>
+<li><a href="#shadow-mode">Shadow-mode results</a></li>
+<li><a href="#load-following-settings">Settings</a></li>
+</ul></li>
 <li><a href="#resilience-and-health-monitoring" id="toc-resilience-and-health-monitoring">Resilience and health
 monitoring</a>
 <ul>
@@ -316,6 +326,9 @@ token to an environment variable</a></li>
 <li><a href="#upgrading-to-a-current-emhass-release" id="toc-upgrading-to-a-current-emhass-release">Upgrading to a current
 EMHASS release</a></li>
 <li><a href="#consolidate-error-handling" id="toc-consolidate-error-handling">Consolidate error handling</a></li>
+<li><a href="#demand-window-guard">Demand-window guard</a></li>
+<li><a href="#power-fade-and-bms-limits">Power fade and BMS limits</a></li>
+<li><a href="#cleanup">Cleanup</a></li>
 <li><a href="#smart-switch-verification" id="toc-smart-switch-verification">Smart switch verification</a></li>
 </ul></li>
 <li><a href="#appendices" id="toc-appendices">Appendices</a></li>
@@ -437,6 +450,9 @@ the EMHASS convention.</p>
 designed but not in production. They are included because they form part
 of the intended architecture and because the reasoning behind them is
 useful.</p>
+</blockquote>
+<blockquote>
+<p><strong>What changed in Revision 4.</strong> A new <a href="#load-following">Load following</a> chapter describes how the battery now tracks the EMHASS plan through a safety-checked decision node and a verified command runner. Battery Polling has been removed. The pool pump now has a daily run window. The dashboard shows the battery's <em>real</em> state rather than the last button pressed. Planned work has been brought up to date.</p>
 </blockquote>
 <h1 id="part-1-how-the-system-works">Part 1 — How the system works</h1>
 <h1 id="system-overview">System overview</h1>
@@ -892,6 +908,7 @@ avoids grid import in that window as a matter of ordinary economics.</p>
 March, June, July, August</li>
 <li><strong>Hours:</strong> 15:00 to 21:00</li>
 </ul>
+<p>The lift also keeps EMHASS from planning the EV or pool pump in the window. A guard for the case where something still draws heavily from the grid is planned (see <a href="#demand-window-guard">Demand-window guard</a>).</p>
 <p>Prices already above $1.00/kWh are left untouched, so genuine price
 spikes are still visible and still exploitable.</p>
 <figure id="fig:demandtariff">
@@ -1167,7 +1184,7 @@ available.</li>
 </ul>
 <h1 id="node-red-control-layer">Node-RED control layer</h1>
 <h2 id="manual-control-switches">Manual control switches</h2>
-<p>Eleven switches expose control to the Home Assistant dashboard,
+<p>A set of switches expose control to the Home Assistant dashboard,
 implemented with the HACS <a href="https://github.com/zachowj/hass-node-red">Node-RED Companion</a>
 integration. This integration lets Node-RED expose entities into Home
 Assistant, and lets Home Assistant enable or disable individual Node-RED
@@ -1278,22 +1295,16 @@ than sending commands:</p>
 use</strong></td>
 </tr>
 <tr class="even">
-<td><strong>Battery Polling</strong></td>
-<td>Detects and corrects battery disengagement.
-<strong>Deprecated</strong> — see below</td>
+<td><strong>Load Follow</strong></td>
+<td>Enables load following (<code>input_boolean.load_follow_enabled</code>).
+See <a href="#load-following">Load following</a></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Battery Polling</strong> was written to address a fault in
-which the sonnen battery would silently stop following its setpoint.
-Every five minutes it compared actual battery power against
-<code>sensor.p_batt_forecast</code> and re-applied the setpoint on a
-mismatch. It is retained but deprecated; the error-handling
-infrastructure described in <a href="#resilience-and-health-monitoring">Resilience and health
-monitoring</a> addresses the same class of problem more directly.</p>
+<p><strong>Battery Polling has been removed.</strong> It was written to address a fault in which the sonnen battery would silently stop following its setpoint, by comparing actual power with the plan every five minutes. Its job is now done by the not-obeying check in the <a href="#load-following">load-following</a> decision node, which also knows about the battery's mode and the plan, so the separate switch, flow and status helper were deleted.</p>
 <blockquote>
 <p><strong>FIGURE 10 REQUIRED</strong> — Home Assistant dashboard card
-showing all eleven control switches, with one mode active and the others
+showing the control switches, with one mode active and the others
 dimmed.</p>
 </blockquote>
 <h2 id="the-api-call-flows">The API call flows</h2>
@@ -1351,6 +1362,7 @@ otherwise a constant stream of parse errors results.</li>
 <p>A named debug node sits at the end of each branch. These can be
 disabled once the system is stable.</p>
 <h3 id="request-pacing">Request pacing</h3>
+<p><em>Revision 4:</em> load-following commands no longer rely on this arrangement. They go through the verified <a href="#command-runner">command runner</a>, which sends one call at a time and waits for each to be confirmed. The older manual switches and the direct EMHASS routing still use the pacing described here.</p>
 <p>Link-in nodes and short delay nodes sit in front of the request flows
 to avoid hitting the battery with several simultaneous HTTP requests.
 The battery’s web server is modest and does drop requests under
@@ -1645,35 +1657,13 @@ BMS-advertised power limits</a>.</p>
 <h2 id="deferrable-load-scheduling">Deferrable load scheduling</h2>
 <p><code>def_total_hours</code> is calculated live for both loads.</p>
 <h3 id="pool-pump">Pool pump</h3>
-<p>Hours are allocated only when energy is cheap — either PV production
-above 2,000 W with an import price below $0.12/kWh, or an import price
-below $0.085/kWh regardless of production. When that condition is met,
-hours are set by season:</p>
-<table>
-<caption>Pool pump runtime allocation</caption>
-<thead>
-<tr class="header">
-<th>Season</th>
-<th>Hours</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Winter</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>Summer</td>
-<td>From <code>input_number.pool_pump_hours</code></td>
-</tr>
-<tr class="odd">
-<td>Spring / Autumn</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>When the price condition is not met, zero hours are allocated and the
-pump does not run.</p>
+<p>The pump runs inside a fixed daily window, <strong>10:00 to 15:00</strong>, and EMHASS chooses the cheapest part of that window. Two controls are passed in the POST:</p>
+<ul>
+<li><code>def_total_hours</code> is the hours set in <code>input_number.pool_pump_hours</code>, capped at the length of the window so the optimiser can never be asked for more hours than fit (that would be infeasible).</li>
+<li><code>start_timesteps_of_each_deferrable_load</code> and <code>end_timesteps_of_each_deferrable_load</code> hold the window as 30-minute step numbers counted from now. An end value of 0 means no limit, which is what the EV uses.</li>
+</ul>
+<p>After 15:00 the window moves to tomorrow. If tomorrow's window ends beyond the forecast horizon, the window is switched off for that cycle rather than risk an infeasible result. The earlier price-and-season rules were removed: they stopped the pump from ever starting once the demand-window price lift (see <a href="#demand-tariffs">Demand tariffs</a>) made every afternoon half hour look expensive. The window removes that interaction.</p>
+<p>The template change is in <a href="#appendix-b-production-mpc-template">Appendix B</a>.</p>
 <h3 id="electric-vehicle">Electric vehicle</h3>
 <p>Hours are allocated only when the car is <strong>at home</strong>
 <em>and</em> the <strong>charge cable is connected</strong>. The
@@ -1769,6 +1759,93 @@ deferrable load flow.</p>
 <p><strong>FIGURE 14 REQUIRED</strong> — Node-RED canvas of the pool
 pump deferrable load flow.</p>
 </blockquote>
+<h1 id="load-following">Load following</h1>
+<h2 id="why-load-following">Why it exists</h2>
+<p>EMHASS plans in 30-minute steps from forecasts. The house does not follow the forecast. If the battery is sent the plan's figure exactly, any difference between planned and real load goes straight to the grid, as an unplanned import or export.</p>
+<p>Load following lets the battery absorb that difference. When the plan expects the grid to be near zero, the battery is put in automatic self-consumption, which tracks the house second by second. When the plan expects real grid flow, usually an export for a price spike, the battery is held at the plan's figure in manual mode.</p>
+<p>A decision node runs <strong>once a minute</strong> and makes this choice. Every action it takes goes through the <a href="#command-runner">command runner</a>.</p>
+<h2 id="decision-inputs">Decision inputs</h2>
+<p>A Render Template node (“Read plan + gates”) gathers everything the decision needs into one JSON object:</p>
+<table>
+<caption>Load-following inputs</caption>
+<thead><tr><th>Field</th><th>Source</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>grid</code></td><td><code>sensor.p_grid_forecast</code></td><td>Planned grid power (negative is export)</td></tr>
+<tr><td><code>batt</code></td><td><code>sensor.p_batt_forecast</code></td><td>Planned battery power (negative is charge)</td></tr>
+<tr><td><code>ctl</code></td><td><code>switch.emhass_fpow_control</code></td><td>Power forecast control is on</td></tr>
+<tr><td><code>opt</code></td><td><code>sensor.optim_status</code></td><td>The plan is <code>Optimal</code></td></tr>
+<tr><td><code>en</code></td><td><code>input_boolean.load_follow_enabled</code></td><td>Load following is switched on</td></tr>
+<tr><td><code>mode</code></td><td><code>sensor.sonnen_operatingmode</code></td><td>The battery's actual mode</td></tr>
+<tr><td><code>age</code></td><td>Same sensor's <code>last_reported</code></td><td>Seconds since the mode was last read</td></tr>
+<tr><td><code>act</code></td><td><code>sensor.sonnenbatterie_84324_state_battery_inout</code></td><td>Actual battery power</td></tr>
+</tbody>
+</table>
+<pre class="jinja"><code>{&quot;grid&quot;:{{ states(&#x27;sensor.p_grid_forecast&#x27;)|float(99999) }},
+&quot;batt&quot;:{{ states(&#x27;sensor.p_batt_forecast&#x27;)|float(99999) }},
+&quot;ctl&quot;:{{ is_state(&#x27;switch.emhass_fpow_control&#x27;,&#x27;on&#x27;)|tojson }},
+&quot;opt&quot;:{{ is_state(&#x27;sensor.optim_status&#x27;,&#x27;Optimal&#x27;)|tojson }},
+&quot;en&quot;:{{ is_state(&#x27;input_boolean.load_follow_enabled&#x27;,&#x27;on&#x27;)|tojson }},
+&quot;mode&quot;:{{ states(&#x27;sensor.sonnen_operatingmode&#x27;)|tojson }},
+&quot;age&quot;:{{ (as_timestamp(now()) - as_timestamp(states.sensor.sonnen_operatingmode.last_reported, 0))|int(99999) }},
+&quot;act&quot;:{{ states(&#x27;sensor.sonnenbatterie_84324_state_battery_inout&#x27;)|float(99999) }}}</code></pre>
+<p>The template uses <code>99999</code> as a “sensor unavailable” marker. The decision node skips the minute if either planned figure reads 99999 or more:</p>
+<pre><code>// A sensor that is unavailable reads 99999: skip this minute.
+if (Math.abs(d.grid) &gt;= 99999 || Math.abs(d.batt) &gt;= 99999) return null;</code></pre>
+<blockquote>
+<p><strong>Bug fixed in Revision 4.</strong> The first version of this check treated any figure of 999 W or more as “missing”. A large export, such as a planned grid figure of −3,058 W, was therefore silently skipped, and the decision was skipped, so the battery stayed in automatic mode instead of following the plan. The marker is now 99999. After the fix the node reported <code>manual batt 1485 grid -3058</code> and the battery discharged at 1.5 kW as planned.</p>
+</blockquote>
+<h2 id="decision-rules">Decision rules</h2>
+<table>
+<caption>Load-following outcomes</caption>
+<thead><tr><th>Situation</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><strong>Dead-band.</strong> Planned battery power under 150 W</td><td>Treated as “do nothing”. Automatic mode is used and no setpoint is sent.</td></tr>
+<tr><td><strong>Follow.</strong> Planned grid within ±50 W of zero for two consecutive checks</td><td>Automatic self-consumption. Leaves follow only when the planned grid passes ±100 W (the gap stops flapping).</td></tr>
+<tr><td><strong>Manual.</strong> Plan needs real grid flow</td><td>Manual mode, and the plan's battery figure is sent whenever it changes.</td></tr>
+<tr><td><strong>Mode mismatch</strong></td><td>If the battery's mode does not match the decision, fix it (to automatic, or to manual), at most once every 5 minutes.</td></tr>
+<tr><td><strong>Not obeying</strong></td><td>In manual mode, if actual power differs from the setpoint by more than 400 W after 3 minutes, resend it. After 3 resends the state is NOT OBEYING and an alert is raised.</td></tr>
+</tbody>
+</table>
+<p>After any change the node waits 120 seconds before judging the result, so the battery has time to respond.</p>
+<h2 id="safety-checks">Safety checks</h2>
+<p>The node does nothing, and sends no commands, unless <strong>all</strong> of these hold:</p>
+<ul>
+<li>Load following is enabled (<code>input_boolean.load_follow_enabled</code>).</li>
+<li>Power forecast control is on.</li>
+<li>The optimiser status is <code>Optimal</code>.</li>
+<li>The plan sensors are available (see the 99999 marker above).</li>
+<li>The battery's reported mode is fresh (read within the last 10 minutes).</li>
+</ul>
+<p>When it stands down, the existing <a href="#handling-infeasible-optimisations">infeasible</a> and <a href="#internet-outage-handling">outage</a> handlers still put the battery in automatic mode, so the fallback is unchanged.</p>
+<h2 id="command-runner">The command runner</h2>
+<p>This replaces the fixed delays for load-following calls. Each action is a <strong>job</strong>: a short list of steps, such as “set manual mode”, then “send the discharge setpoint”. The runner then:</p>
+<ol>
+<li>Sends one step at a time, 3 seconds apart.</li>
+<li>Reads the result back from the battery (for example <code>EM_OperatingMode</code>) and checks it is what was expected, not just that the call returned a success code.</li>
+<li>On failure, waits 5 seconds and retries, up to 3 times.</li>
+<li>If the job still fails, stops it, records the error and sends an alert.</li>
+</ol>
+<p>Alerts are limited to one every 30 minutes. Reboot-type errors between midnight and 04:00 (the battery's nightly controller reboot, see <a href="#classification-and-grace-periods">Classification and grace periods</a>) are suppressed. A job that failed during the reboot window shows an old failure on the dashboard until the next job completes; this is cosmetic.</p>
+<h2 id="shadow-mode">Shadow-mode results</h2>
+<p>Before going live, the decision logic ran for several days in a <strong>shadow</strong> flow that logged what it <em>would</em> do without commanding the battery. That run found the problems fixed above, and confirmed the dead-band and follow thresholds. Once live, the battery matched the plan's discharge, with the house served by the battery and the surplus exported.</p>
+<p>One accepted trade-off: in automatic mode the battery charges from all spare solar, whatever the plan's charge figure says. EMHASS may prefer to export solar when the current price is high and charge later, but the battery fills sooner than planned. This was accepted for simplicity; it is not an error.</p>
+<h2 id="load-following-settings">Settings</h2>
+<table>
+<caption>Load-following constants</caption>
+<thead><tr><th>Setting</th><th>Value</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>DEAD_BAND_W</code></td><td>150</td><td>Plans smaller than this are ignored</td></tr>
+<tr><td><code>FOLLOW_ENTER_W</code> / <code>FOLLOW_EXIT_W</code></td><td>50 / 100</td><td>Grid limits for entering and leaving follow</td></tr>
+<tr><td><code>FOLLOW_CHECKS</code></td><td>2</td><td>Consecutive checks needed to enter follow</td></tr>
+<tr><td><code>SETTLE_SEC</code></td><td>120</td><td>Wait after a change</td></tr>
+<tr><td><code>MODE_MAX_AGE_SEC</code></td><td>600</td><td>Oldest acceptable mode reading</td></tr>
+<tr><td><code>MODE_FIX_GAP_MS</code></td><td>300000</td><td>Minimum time between mode fixes</td></tr>
+<tr><td><code>OBEY_TOLERANCE_W</code></td><td>400</td><td>Allowed gap between setpoint and actual power</td></tr>
+<tr><td><code>OBEY_SETTLE_SEC</code></td><td>180</td><td>Wait before judging obedience</td></tr>
+<tr><td><code>OBEY_GAP_MS</code></td><td>300000</td><td>Minimum time between resends</td></tr>
+<tr><td><code>OBEY_MAX_RESENDS</code></td><td>3</td><td>Resends before NOT OBEYING</td></tr>
+</tbody>
+</table>
 <h1 id="resilience-and-health-monitoring">Resilience and health
 monitoring</h1>
 <p>This is the part of the system that has grown most since the previous
@@ -1987,7 +2064,6 @@ self-consumption</strong> (<code>EM_OperatingMode=2</code>) via the
 <code>switch.emhass_fpow_control</code>,
 <code>switch.tesla_deferrable_load</code>,
 <code>switch.pool_deferrable_load</code>,
-<code>switch.battery_polling</code>,
 <code>switch.follow_sun_2</code>.</li>
 <li>A push notification is sent: <em>“Internet down 15min — battery to
 Self-consumption”</em>.</li>
@@ -2120,6 +2196,9 @@ escalating thresholds:</p>
 charge can be scheduled into a cheap or high-solar period rather than
 being forced by the BMS at an expensive time.</p>
 <h2 id="health-monitoring-roadmap">Health monitoring roadmap</h2>
+<blockquote>
+<p><strong>Status, Revision 4.</strong> Battery-side checks have moved forward: the load-following node verifies the battery's mode and that it is obeying its setpoint, and the command runner confirms every call by reading it back. The three capabilities below, which cover the pool pump and EV switches, data freshness and the combined indicator, are still not implemented.</p>
+</blockquote>
 <p>Three further monitoring capabilities are designed but <strong>not
 yet implemented</strong>:</p>
 <h3 id="combined-health-indicator">Combined health indicator</h3>
@@ -2259,9 +2338,16 @@ rework. The intended structure:</p>
 <li>Data freshness indicators</li>
 <li>Recent error log</li>
 </ul>
+<p><strong>Battery mode tiles</strong> — the battery's real state, not the last button pressed.</p>
+<ul>
+<li>Five button cards: Automatic, Manual, Standby, Charge and Discharge.</li>
+<li>Each lights from a template binary sensor that reads the battery itself (see <a href="#appendix-e-entity-reference">Appendix E</a>). Standby, Charge and Discharge look at the measured battery power, so a tile shows what the battery is doing, whatever commanded it.</li>
+<li>Manual and Standby are display-only. Charge and Discharge toggle <code>switch.sonnen_charge_2</code> and <code>switch.sonnen_discharge_2</code>, using the power set on the slider.</li>
+<li>A glance card shows Power Forecast Control, Load Follow, Tesla Deferrable Load and Pool Deferrable Load.</li>
+</ul>
 <p><strong>Manual control</strong> — override when needed.</p>
 <ul>
-<li>The eleven control switches</li>
+<li>The control switches</li>
 <li>Charge and discharge sliders</li>
 <li>Pool pump hours and EV amps inputs</li>
 </ul>
@@ -2468,10 +2554,7 @@ configuration value and adds nothing over what is already known.</p>
 </blockquote>
 <h2 id="request-queue-for-battery-api-calls">Request queue for battery
 API calls</h2>
-<p>The current pacing arrangement uses fixed delay nodes to avoid
-overlapping requests. A proper serialised queue with retry and back-off
-would be more robust and would remove a class of transient errors
-currently absorbed by the error handler.</p>
+<p><strong>Status:</strong> done for load following. The <a href="#command-runner">command runner</a> is a serialised queue with verification, retry and back-off. The legacy manual and EMHASS-routed calls still use fixed delays and should be moved onto the runner.</p>
 <h2 id="move-the-api-token-to-an-environment-variable">Move the API
 token to an environment variable</h2>
 <p>The sonnen API token is currently hard-coded in roughly a dozen
@@ -2567,6 +2650,19 @@ in between.</p>
 <p>The catch-node infrastructure and the older status-code function
 nodes overlap. The file-based log should be driven from the classifier
 rather than maintained separately.</p>
+<h2 id="demand-window-guard">Demand-window guard</h2>
+<p><strong>Status:</strong> designed, not built. From November the demand window (15:00 to 21:00) applies again. The price lift in the MPC template discourages EMHASS from planning deferrable loads there, but it does not stop a load starting by other means. The planned guard watches grid import in the window. If it stays high, it switches off EV charging and sends an alert. A second check warns when the battery is low going into the window.</p>
+<p>The aim is to prevent a large grid draw over a half hour, such as the car charging at 7 kW. A small import (the dead-band of about 150 W) is not a concern.</p>
+<h2 id="power-fade-and-bms-limits">Power fade and BMS limits</h2>
+<p><strong>Status:</strong> under observation. The inverter reached 87 °C at 3.2 kW charge with no power fade yet, so temperature is the leading suspect for the taper. The BMS limit sensor reads 0 W when the battery is idle, so it cannot feed EMHASS directly. A longer steady run is needed before replacing the fixed thresholds.</p>
+<h2 id="cleanup">Cleanup</h2>
+<ul>
+<li>Delete the shadow flow after a few reliable days.</li>
+<li>Remove the leftover “p_batt Control switch (enable only)” node.</li>
+<li>Review the outage fallback path, which goes through the Automatic switch node. That node only emits when its state changes.</li>
+<li>Move the legacy charge, discharge and standby calls onto the command runner.</li>
+<li>Optionally restore command taps on the Manual and Standby tiles.</li>
+</ul>
 <h2 id="smart-switch-verification">Smart switch verification</h2>
 <p>See <a href="#smart-switch-health-monitoring">Smart switch health
 monitoring</a>. The Tuya power board has been migrated to LocalTuya and
@@ -2834,20 +2930,17 @@ Template node every 60 seconds. It produces the JSON body POSTed to
   {#- Deferrable loads -#}
   &quot;num_def_loads&quot;: 2,
   &quot;def_total_hours&quot;: [
-    {#- Pool pump: allocate hours only when energy is cheap -#}
-    {%- if states(&#39;sensor.sonnenbatterie_84324_production_w&#39;) | float(0) &gt; 2000
-           and states(&#39;sensor.amber_5min_current_general_price&#39;) | float(0) &lt; 0.12
-           or states(&#39;sensor.amber_5min_current_general_price&#39;) | float(0) &lt; 0.085 -%}
-      {%- if is_state(&#39;sensor.season&#39;, &#39;winter&#39;) -%}
-        {{ 1 }}
-      {%- elif is_state(&#39;sensor.season&#39;, &#39;summer&#39;) -%}
-        {{ states(&#39;input_number.pool_pump_hours&#39;) }}
-      {%- else -%}
-        {{ 3 }}
-      {%- endif -%}
-    {%- else -%}
-      {{ 0 }}
-    {%- endif -%},
+    {#- Pool pump window 10:00-15:00, converted to 30-minute step numbers from now.
+        After 15:00 the window moves to tomorrow. -#}
+    {%- set step_s = 1800 -%}
+    {%- set d = now().replace(hour=0,minute=0,second=0,microsecond=0) + (timedelta(days=1) if now().hour &gt;= 15 else timedelta(0)) -%}
+    {%- set pool_start = [0, (((d + timedelta(hours=10)).timestamp() - now().timestamp()) / step_s) | round(0,&#x27;ceil&#x27;) | int] | max -%}
+    {%- set pool_end = (((d + timedelta(hours=15)).timestamp() - now().timestamp()) / step_s) | round(0,&#x27;ceil&#x27;) | int -%}
+    {#- If the window ends beyond the forecast horizon, switch it off -#}
+    {%- set horizon_n = ([prod_price_forecast | length, load_cost_forecast | length, pv_power_forecast | length, load_power_forecast | length] | min) - 1 -%}
+    {%- if pool_end &gt; horizon_n -%}{%- set pool_start = 0 -%}{%- set pool_end = 0 -%}{%- endif -%}
+    {#- Hours cannot exceed what is left of the window, or EMHASS goes infeasible -#}
+    {{ [states(&#x27;input_number.pool_pump_hours&#x27;)|int(0), ((pool_end - pool_start) / 2) | int] | min }},
     {#- EV: only when home and plugged in; hours scale with charge gap -#}
     {%- if is_state(&#39;device_tracker.ynot_location&#39;, &#39;home&#39;) -%}
       {%- if is_state(&#39;binary_sensor.ynot_charge_cable&#39;, &#39;on&#39;) -%}
@@ -2866,6 +2959,8 @@ Template node every 60 seconds. It produces the JSON body POSTed to
 
   &quot;treat_def_as_semi_cont&quot;: [1, 0],
   &quot;set_def_constant&quot;: [0, 0],
+  &quot;start_timesteps_of_each_deferrable_load&quot;: [{{ pool_start }}, 0],
+  &quot;end_timesteps_of_each_deferrable_load&quot;: [{{ pool_end }}, 0],
 
   &quot;soc_init&quot;: {{ (states(&#39;sensor.sonnenbatterie_84324_state_charge_user&#39;) | int(0)) / 100 }},
   &quot;soc_final&quot;: 0.08,
@@ -3445,6 +3540,26 @@ stale</strong>)</td>
 <td>Amber forecast price attribute selector</td>
 </tr>
 <tr class="odd">
+<td><code>binary_sensor.sonnen_automatic_active</code></td>
+<td>True when the battery is in automatic self-consumption</td>
+</tr>
+<tr class="even">
+<td><code>binary_sensor.sonnen_manual_active</code></td>
+<td>True when the operating mode is Manual Control</td>
+</tr>
+<tr class="odd">
+<td><code>binary_sensor.sonnen_standby_active</code></td>
+<td>Manual mode and battery power under 50 W</td>
+</tr>
+<tr class="even">
+<td><code>binary_sensor.sonnen_charge_active</code></td>
+<td>Manual mode and charging above 50 W</td>
+</tr>
+<tr class="odd">
+<td><code>binary_sensor.sonnen_discharge_active</code></td>
+<td>Manual mode and discharging above 50 W</td>
+</tr>
+<tr class="even">
 <td><code>switch.emhass_fpow_control</code></td>
 <td>Enable power-following control</td>
 </tr>
@@ -3461,8 +3576,8 @@ stale</strong>)</td>
 <td>Enable pool pump control</td>
 </tr>
 <tr class="odd">
-<td><code>switch.battery_polling</code></td>
-<td>Enable battery re-engagement polling (deprecated)</td>
+<td><code>input_boolean.load_follow_enabled</code></td>
+<td>Enable load following</td>
 </tr>
 <tr class="even">
 <td><code>switch.sonnen_automatic_mode</code></td>
@@ -3602,8 +3717,8 @@ control.</p>
 </table>
 
 <footer class="doc">
-  <p>Home Energy Management with EMHASS — August 2026 — EMHASS
-v0.13.5 — Revision 3. Prepared for cruikshank.id.au.</p>
+  <p>Home Energy Management with EMHASS — October 2026 — EMHASS
+v0.13.5 — Revision 4. Prepared for cruikshank.id.au.</p>
 </footer>
 
 </div>
