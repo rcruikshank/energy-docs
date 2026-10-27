@@ -1531,6 +1531,32 @@ template</a>.</p>
 <p>Each array has the <strong>current measured value prepended as
 element zero</strong>. This is what <code>alpha: 1</code> then weights
 heavily.</p>
+<h3 id="live-first-point">The first point is live data, not a forecast</h3>
+<p>Element zero of each array is not predicted. It is what is happening
+right now:</p>
+<ul>
+<li><strong>Solar:</strong> the measured PV production this moment, in
+place of the Solcast value for the current interval.</li>
+<li><strong>House load:</strong> the measured consumption this moment,
+in place of the FIFO-buffer forecast for the current interval.</li>
+<li><strong>Import and feed-in prices:</strong> the settled Amber
+5-minute tariff for this moment
+(<code>sensor.amber_5min_current_general_price</code> and
+<code>sensor.amber_5min_current_feed_in_price</code>), not the 30-minute
+forecast for that interval. During the demand window the import price is
+replaced by the demand-window override.</li>
+</ul>
+<p>Every later point is a forecast, so the plan starts from reality and
+bends toward the forecast. With <code>alpha: 1</code> the optimiser
+weights element zero heavily, so the action for the current interval
+reflects live conditions: a cloud, a kettle, or a price spike that was
+not in the forecast changes what the battery and deferrable loads do
+immediately. The plan is recomputed every 60 seconds, so the live point
+is always current.</p>
+<p>The price is only as good as its source. If the 5-minute sensor is
+unavailable the template falls back to 0, which would look like a free
+tariff; the planned data-freshness monitoring is meant to catch
+that.</p>
 <h3 id="runtime-parameters">Runtime parameters</h3>
 <table>
 <caption>Runtime parameters in the MPC POST</caption>
